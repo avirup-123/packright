@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node C:/Users/HI/Music/packright-april/proxy.js)",
+      "Bash(/c/flutter/bin/flutter.bat run *)",
+      "Bash(/c/flutter/bin/flutter.bat build *)",
+      "Bash(/c/flutter/bin/flutter.bat create *)",
+      "Bash(keytool -genkey -v -keystore android/packright-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias packright -storepass packright2024 -keypass packright2024 -dname \"CN=PackRight, OU=Mobile, O=PackRight, L=Unknown, ST=Unknown, C=IN\")",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Program Files/Android/Android Studio/jbr/**)",
+      "Bash(/c/flutter/bin/dart.bat --version)",
+      "Read(//c/flutter/bin/cache/dart-sdk/bin/**)",
+      "Read(//c/flutter/**)",
+      "Bash(gh --version)",
+      "Bash(git --version)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp"
+    ]
+  }
+}
