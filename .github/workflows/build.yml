@@ -3,7 +3,7 @@ name: Build APK & AAB
 on:
   push:
     branches: [ main, master ]
-  workflow_dispatch: # Allows manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
   build:
@@ -30,9 +30,17 @@ jobs:
 
       - name: Generate keystore
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/packright-release-key.jks
+          keytool -genkey -v \
+            -keystore android/packright-release-key.jks \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -alias packright \
+            -storepass ${{ secrets.KEYSTORE_PASSWORD }} \
+            -keypass ${{ secrets.KEY_PASSWORD }} \
+            -dname "CN=PackRight, OU=Mobile, O=PackRight, L=City, ST=State, C=IN"
 
-      - name: Update key.properties
+      - name: Create key.properties
         run: |
           cat > android/key.properties << EOF
           storePassword=${{ secrets.KEYSTORE_PASSWORD }}
