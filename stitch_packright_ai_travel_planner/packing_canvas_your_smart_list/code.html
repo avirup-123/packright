@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PackRight - Packing Canvas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdad2",
+                    "inverse-on-surface": "#f4f0ea",
+                    "inverse-primary": "#ffb4a3",
+                    "surface-bright": "#fdf9f3",
+                    "outline": "#8a716c",
+                    "surface-tint": "#a33d25",
+                    "on-surface-variant": "#57423d",
+                    "surface": "#fdf9f3",
+                    "tertiary-fixed": "#f2dfcf",
+                    "secondary-fixed-dim": "#a8d0ae",
+                    "inverse-surface": "#31302d",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e6e2dc",
+                    "secondary-fixed": "#c3edc9",
+                    "on-primary-container": "#fffbff",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fdf9f3",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#fffbff",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#a03b23",
+                    "primary-fixed-dim": "#ffb4a3",
+                    "on-tertiary-fixed": "#231a10",
+                    "on-secondary-container": "#486d50",
+                    "surface-container-highest": "#e6e2dc",
+                    "surface-container-low": "#f7f3ed",
+                    "on-primary-fixed": "#3d0700",
+                    "on-primary-fixed-variant": "#832610",
+                    "secondary-container": "#c3edc9",
+                    "on-secondary-fixed-variant": "#2a4e34",
+                    "on-tertiary-fixed-variant": "#504539",
+                    "on-secondary-fixed": "#00210d",
+                    "secondary": "#42674b",
+                    "surface-container": "#f1ede7",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#c05238",
+                    "surface-dim": "#dddad4",
+                    "tertiary": "#675a4d",
+                    "tertiary-container": "#807264",
+                    "outline-variant": "#dec0b9",
+                    "on-background": "#1c1c18",
+                    "tertiary-fixed-dim": "#d5c4b4",
+                    "on-surface": "#1c1c18",
+                    "surface-container-high": "#ebe8e2",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "margin-mobile": "20px",
+                    "gutter": "16px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "margin-desktop": "auto",
+                    "lg": "40px",
+                    "md": "24px",
+                    "max-width": "1200px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .custom-checkbox {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid theme('colors.outline');
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease-in-out;
+        }
+        .custom-checkbox:checked {
+            background-color: theme('colors.secondary-container');
+            border-color: theme('colors.secondary-container');
+        }
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 6px;
+            height: 12px;
+            border-bottom: 2px solid theme('colors.on-secondary-container');
+            border-right: 2px solid theme('colors.on-secondary-container');
+        }
+        .item-row.checked {
+            opacity: 0.6;
+            background-color: theme('colors.surface-container-low');
+        }
+        .item-row.checked .item-label {
+            text-decoration: line-through;
+            color: theme('colors.on-surface-variant');
+        }
+        .accordion-content {
+            display: none;
+        }
+        .accordion-content.active {
+            display: block;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-btn[aria-expanded="true"] .accordion-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col pt-20 pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background shadow-[0_4px_16px_rgba(107,94,81,0.05)] md:hidden">
+<div class="flex justify-between items-center w-full px-margin-mobile py-base max-w-max-width mx-auto h-16">
+<div class="flex items-center gap-xs">
+<button class="p-2 text-on-surface hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+</div>
+<div class="text-center flex-1">
+<h1 class="font-headline-md text-headline-md font-bold text-primary truncate px-2">Tokyo &amp; Osaka Backpacking</h1>
+</div>
+<button class="p-2 text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[24px]">more_vert</span>
+</button>
+</div>
+<!-- Sticky Progress Bar -->
+<div class="bg-surface-container-low px-margin-mobile py-sm border-b border-surface-variant shadow-[0_4px_16px_rgba(107,94,81,0.02)]">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-md text-label-md text-on-surface-variant">Packing Progress</span>
+<span class="font-label-md text-label-md text-on-surface font-bold" id="progress-text">14 / 42 Packed</span>
+</div>
+<div class="h-3 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container transition-all duration-500 ease-out rounded-full" id="progress-fill" style="width: 33%;"></div>
+</div>
+</div>
+</header>
+<!-- Desktop Header -->
+<header class="hidden md:block fixed top-0 w-full z-50 bg-background shadow-[0_4px_16px_rgba(107,94,81,0.05)]">
+<div class="flex justify-between items-center w-full px-lg py-sm max-w-max-width mx-auto">
+<div class="flex items-center gap-md">
+<button class="p-2 text-on-surface hover:opacity-80 transition-opacity bg-surface-container rounded-full flex items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<span class="font-headline-lg text-headline-lg font-bold text-primary">PackRight</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</button>
+<button class="p-2 text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[24px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Sticky Progress Bar Desktop -->
+<div class="bg-surface-container-low border-b border-surface-variant shadow-[0_4px_16px_rgba(107,94,81,0.02)]">
+<div class="max-w-max-width mx-auto px-lg py-sm flex items-center gap-md">
+<div class="flex-1">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface mb-1">Tokyo &amp; Osaka Backpacking</h1>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant w-24">Progress</span>
+<div class="h-3 flex-1 bg-surface-variant rounded-full overflow-hidden max-w-md">
+<div class="h-full bg-secondary-container transition-all duration-500 ease-out rounded-full" id="progress-fill-desktop" style="width: 33%;"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold w-24 text-right" id="progress-text-desktop">14 / 42 Packed</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 px-margin-mobile md:px-lg max-w-max-width mx-auto w-full mt-24 md:mt-32 space-y-lg">
+<!-- Accordion Category: Clothing -->
+<div class="bg-surface-container rounded-xl shadow-[0_4px_16px_rgba(107,94,81,0.05)] overflow-hidden">
+<button aria-expanded="true" class="accordion-btn w-full px-md py-md flex items-center justify-between bg-surface-container hover:bg-surface-container-high transition-colors" data-target="content-clothing">
+<div class="flex items-center gap-sm">
+<span class="text-2xl">👕</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Clothing</h2>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="font-label-md text-label-md bg-surface-variant px-3 py-1 rounded-full">5/12</span>
+<span class="material-symbols-outlined accordion-icon">expand_more</span>
+</div>
+</button>
+<div class="accordion-content active px-xs pb-sm" id="content-clothing">
+<div class="space-y-xs">
+<!-- Item -->
+<div class="item-row flex items-start gap-sm p-sm rounded-lg hover:bg-surface-container-high transition-colors group">
+<div class="pt-1">
+<input checked="" class="custom-checkbox item-checkbox" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div>
+<p class="font-body-md text-body-md text-on-surface font-bold item-label">Merino Wool T-Shirts (x4)</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant italic">Odour resistant, good for humid days.</p>
+</div>
+<span class="font-label-sm text-label-sm bg-[#e3f2fd] text-[#0d47a1] px-3 py-1 rounded-full shrink-0 self-start md:self-auto flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">backpack</span> Carry-on
+                            </span>
+</div>
+</div>
+<!-- Item -->
+<div class="item-row flex items-start gap-sm p-sm rounded-lg hover:bg-surface-container-high transition-colors group">
+<div class="pt-1">
+<input class="custom-checkbox item-checkbox" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div>
+<p class="font-body-md text-body-md text-on-surface font-bold item-label">Lightweight Rain Jacket</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant italic">Essential for sudden downpours.</p>
+</div>
+<span class="font-label-sm text-label-sm bg-[#e3f2fd] text-[#0d47a1] px-3 py-1 rounded-full shrink-0 self-start md:self-auto flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">backpack</span> Carry-on
+                            </span>
+</div>
+</div>
+</div>
+<!-- Add Item Input -->
+<div class="mt-sm px-sm py-2">
+<div class="flex items-center gap-sm bg-surface-bright border-b border-outline-variant p-2 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">add</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder-on-surface-variant p-0" placeholder="Add custom item..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion Category: Electronics -->
+<div class="bg-surface-container rounded-xl shadow-[0_4px_16px_rgba(107,94,81,0.05)] overflow-hidden">
+<button aria-expanded="true" class="accordion-btn w-full px-md py-md flex items-center justify-between bg-surface-container hover:bg-surface-container-high transition-colors" data-target="content-electronics">
+<div class="flex items-center gap-sm">
+<span class="text-2xl">🔌</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Electronics</h2>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="font-label-md text-label-md bg-surface-variant px-3 py-1 rounded-full">2/8</span>
+<span class="material-symbols-outlined accordion-icon">expand_more</span>
+</div>
+</button>
+<div class="accordion-content active px-xs pb-sm" id="content-electronics">
+<div class="space-y-xs">
+<!-- Item -->
+<div class="item-row flex items-start gap-sm p-sm rounded-lg hover:bg-surface-container-high transition-colors group">
+<div class="pt-1">
+<input class="custom-checkbox item-checkbox" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div>
+<p class="font-body-md text-body-md text-on-surface font-bold item-label">Universal Plug Adapter</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant italic">Japan uses flat two-prong Type A/B sockets.</p>
+</div>
+<span class="font-label-sm text-label-sm bg-[#fff3e0] text-[#e65100] px-3 py-1 rounded-full shrink-0 self-start md:self-auto flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">luggage</span> Checked
+                            </span>
+</div>
+</div>
+<!-- Item -->
+<div class="item-row flex items-start gap-sm p-sm rounded-lg hover:bg-surface-container-high transition-colors group checked">
+<div class="pt-1">
+<input checked="" class="custom-checkbox item-checkbox" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+<div>
+<p class="font-body-md text-body-md text-on-surface font-bold item-label">Power Bank (20,000mAh)</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant italic">Must be in carry-on for flights.</p>
+</div>
+<span class="font-label-sm text-label-sm bg-[#e3f2fd] text-[#0d47a1] px-3 py-1 rounded-full shrink-0 self-start md:self-auto flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">backpack</span> Carry-on
+                            </span>
+</div>
+</div>
+</div>
+<!-- Add Item Input -->
+<div class="mt-sm px-sm py-2">
+<div class="flex items-center gap-sm bg-surface-bright border-b border-outline-variant p-2 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">add</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder-on-surface-variant p-0" placeholder="Add custom item..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion Category: Toiletries -->
+<div class="bg-surface-container rounded-xl shadow-[0_4px_16px_rgba(107,94,81,0.05)] overflow-hidden">
+<button aria-expanded="false" class="accordion-btn w-full px-md py-md flex items-center justify-between bg-surface-container hover:bg-surface-container-high transition-colors" data-target="content-toiletries">
+<div class="flex items-center gap-sm">
+<span class="text-2xl">🧳</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Toiletries</h2>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="font-label-md text-label-md bg-surface-variant px-3 py-1 rounded-full">4/10</span>
+<span class="material-symbols-outlined accordion-icon">expand_more</span>
+</div>
+</button>
+<div class="accordion-content px-xs pb-sm" id="content-toiletries">
+<div class="mt-sm px-sm py-2">
+<div class="flex items-center gap-sm bg-surface-bright border-b border-outline-variant p-2 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">add</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder-on-surface-variant p-0" placeholder="Add custom item..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion Category: Documents -->
+<div class="bg-surface-container rounded-xl shadow-[0_4px_16px_rgba(107,94,81,0.05)] overflow-hidden mb-lg">
+<button aria-expanded="false" class="accordion-btn w-full px-md py-md flex items-center justify-between bg-surface-container hover:bg-surface-container-high transition-colors" data-target="content-documents">
+<div class="flex items-center gap-sm">
+<span class="text-2xl">📄</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Documents</h2>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="font-label-md text-label-md bg-surface-variant px-3 py-1 rounded-full">3/12</span>
+<span class="material-symbols-outlined accordion-icon">expand_more</span>
+</div>
+</button>
+<div class="accordion-content px-xs pb-sm" id="content-documents">
+<div class="mt-sm px-sm py-2">
+<div class="flex items-center gap-sm bg-surface-bright border-b border-outline-variant p-2 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">add</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder-on-surface-variant p-0" placeholder="Add custom item..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full rounded-t-xl z-50 md:hidden bg-surface-container shadow-[0_-4px_16px_rgba(107,94,81,0.05)]">
+<div class="flex justify-around items-center px-xs pb-safe h-16 w-full max-w-max-width mx-auto">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-all duration-200 rounded-lg p-2">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 hover:bg-surface-variant transition-all duration-200 scale-90">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">checklist</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Lists</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-all duration-200 rounded-lg p-2">
+<span class="material-symbols-outlined text-[24px]">history</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-all duration-200 rounded-lg p-2">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="font-label-sm text-label-sm-mobile mt-1">Profile</span>
+</button>
+</div>
+</nav>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Checkbox interaction
+            const checkboxes = document.querySelectorAll('.item-checkbox');
+            checkboxes.forEach(box => {
+                // Set initial state
+                if(box.checked) {
+                     box.closest('.item-row').classList.add('checked');
+                }
+                
+                box.addEventListener('change', (e) => {
+                    const row = e.target.closest('.item-row');
+                    if (e.target.checked) {
+                        row.classList.add('checked');
+                    } else {
+                        row.classList.remove('checked');
+                    }
+                    // In a real app, we would update progress bar here
+                });
+            });
+
+            // Accordion interaction
+            const accordions = document.querySelectorAll('.accordion-btn');
+            accordions.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-target');
+                    const content = document.getElementById(targetId);
+                    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+                    
+                    if (isExpanded) {
+                        btn.setAttribute('aria-expanded', 'false');
+                        content.classList.remove('active');
+                    } else {
+                        btn.setAttribute('aria-expanded', 'true');
+                        content.classList.add('active');
+                    }
+                });
+            });
+            
+            // Handle input enter (mock adding item)
+            const inputs = document.querySelectorAll('input[type="text"]');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter' && this.value.trim() !== '') {
+                        const contentDiv = this.closest('.accordion-content').querySelector('.space-y-xs');
+                        if(contentDiv) {
+                            const newItemHTML = `
+                                <div class="item-row flex items-start gap-sm p-sm rounded-lg hover:bg-surface-container-high transition-colors group">
+                                    <div class="pt-1">
+                                        <input type="checkbox" class="custom-checkbox item-checkbox">
+                                    </div>
+                                    <div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+                                        <div>
+                                            <p class="font-body-md text-body-md text-on-surface font-bold item-label">${this.value}</p>
+                                        </div>
+                                         <span class="font-label-sm text-label-sm bg-[#e3f2fd] text-[#0d47a1] px-3 py-1 rounded-full shrink-0 self-start md:self-auto flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[14px]">backpack</span> Unassigned
+                                        </span>
+                                    </div>
+                                </div>
+                            `;
+                            contentDiv.insertAdjacentHTML('beforeend', newItemHTML);
+                            
+                            // re-bind listener to new checkbox
+                            const newCheckbox = contentDiv.lastElementChild.querySelector('.item-checkbox');
+                            newCheckbox.addEventListener('change', (ev) => {
+                                 const row = ev.target.closest('.item-row');
+                                if (ev.target.checked) {
+                                    row.classList.add('checked');
+                                } else {
+                                    row.classList.remove('checked');
+                                }
+                            });
+                        }
+                        this.value = ''; // clear input
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

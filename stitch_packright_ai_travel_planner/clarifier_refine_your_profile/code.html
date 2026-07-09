@@ -1,0 +1,237 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PackRight - Clarifier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffdad2",
+                        "inverse-on-surface": "#f4f0ea",
+                        "inverse-primary": "#ffb4a3",
+                        "surface-bright": "#fdf9f3",
+                        "outline": "#8a716c",
+                        "surface-tint": "#a33d25",
+                        "on-surface-variant": "#57423d",
+                        "surface": "#fdf9f3",
+                        "tertiary-fixed": "#f2dfcf",
+                        "secondary-fixed-dim": "#a8d0ae",
+                        "inverse-surface": "#31302d",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e6e2dc",
+                        "secondary-fixed": "#c3edc9",
+                        "on-primary-container": "#fffbff",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fdf9f3",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#a03b23",
+                        "primary-fixed-dim": "#ffb4a3",
+                        "on-tertiary-fixed": "#231a10",
+                        "on-secondary-container": "#486d50",
+                        "surface-container-highest": "#e6e2dc",
+                        "surface-container-low": "#f7f3ed",
+                        "on-primary-fixed": "#3d0700",
+                        "on-primary-fixed-variant": "#832610",
+                        "secondary-container": "#c3edc9",
+                        "on-secondary-fixed-variant": "#2a4e34",
+                        "on-tertiary-fixed-variant": "#504539",
+                        "on-secondary-fixed": "#00210d",
+                        "secondary": "#42674b",
+                        "surface-container": "#f1ede7",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#c05238",
+                        "surface-dim": "#dddad4",
+                        "tertiary": "#675a4d",
+                        "tertiary-container": "#807264",
+                        "outline-variant": "#dec0b9",
+                        "on-background": "#1c1c18",
+                        "tertiary-fixed-dim": "#d5c4b4",
+                        "on-surface": "#1c1c18",
+                        "surface-container-high": "#ebe8e2",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "margin-mobile": "20px",
+                        "gutter": "16px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "margin-desktop": "auto",
+                        "lg": "40px",
+                        "md": "24px",
+                        "max-width": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pill-active {
+            background-color: theme('colors.secondary-fixed-dim');
+            border-color: theme('colors.secondary-fixed-dim');
+            color: theme('colors.on-secondary-fixed-variant');
+        }
+        .pill-inactive {
+            border-color: theme('colors.outline');
+            color: theme('colors.on-surface-variant');
+        }
+        .shadow-ambient-low {
+            box-shadow: 0 4px 16px rgba(107, 94, 81, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-background w-full z-50 sticky top-0 flex justify-between items-center px-margin-mobile py-base max-w-max-width mx-auto">
+<div class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">luggage</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">PackRight</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col px-margin-mobile md:px-margin-desktop w-full max-w-max-width mx-auto pb-32 pt-md md:pt-lg">
+<div class="max-w-2xl mx-auto w-full">
+<!-- Header Text -->
+<div class="mb-lg text-center md:text-left">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-sm">
+                    Just a few quick details to perfect your list:
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    We'll tailor your packing recommendations based on these specifics.
+                </p>
+</div>
+<!-- Interactive Interview Cards -->
+<div class="space-y-md">
+<!-- Card 1: Accommodation -->
+<div class="bg-surface-container-low rounded-xl p-md shadow-ambient-low border border-surface-variant transition-all duration-300">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">
+                        What type of accommodation are you staying in?
+                    </h2>
+<div class="flex flex-wrap gap-sm">
+<button class="option-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 pill-inactive transition-colors duration-200 hover:bg-surface-variant">
+<span class="font-label-md text-label-md">Hotel / Airbnb</span>
+</button>
+<button class="option-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 pill-inactive transition-colors duration-200 hover:bg-surface-variant">
+<span class="font-label-md text-label-md">Backpacker Hostel</span>
+</button>
+<button class="option-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 pill-inactive transition-colors duration-200 hover:bg-surface-variant">
+<span class="font-label-md text-label-md">Camping / Outdoors</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Activity Profile -->
+<div class="bg-surface-container-low rounded-xl p-md shadow-ambient-low border border-surface-variant transition-all duration-300">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">
+                        What is your primary activity profile?
+                    </h2>
+<div class="flex flex-wrap gap-sm">
+<button class="option-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 pill-inactive transition-colors duration-200 hover:bg-surface-variant">
+<span class="font-label-md text-label-md">Business Meetings</span>
+</button>
+<button class="option-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 pill-inactive transition-colors duration-200 hover:bg-surface-variant">
+<span class="font-label-md text-label-md">Formal Wedding</span>
+</button>
+<button class="option-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 pill-inactive transition-colors duration-200 hover:bg-surface-variant">
+<span class="font-label-md text-label-md">Casual Sightseeing</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Area -->
+<div class="mt-xl flex justify-center md:justify-end">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-full shadow-[0_4px_16px_rgba(107,94,81,0.1)] hover:shadow-none hover:bg-primary-container transition-all duration-200 flex items-center gap-2 active:scale-95 w-full md:w-auto justify-center">
+<span class="">Build My Packing List</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="fixed bottom-8 right-8 md:right-margin-desktop z-50 flex flex-col items-end gap-4">
+  <button aria-label="Voice Input" class="w-14 h-14 flex items-center justify-center rounded-full bg-[#E06A4E] text-white shadow-lg hover:opacity-90 active:scale-95 transition-all group relative" id="voiceInputBtn">
+    <span class="material-symbols-outlined text-[28px]">mic</span>
+    <span class="absolute inset-0 rounded-full bg-[#E06A4E] animate-ping opacity-0 group-hover:opacity-20 transition-opacity"></span>
+    <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-inverse-surface text-inverse-on-surface px-3 py-1.5 rounded-lg text-sm font-label-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
+      Speak to refine list
+    </div>
+  </button>
+</div></main>
+<!-- BottomNavBar is suppressed due to Task-Focused intent (Clarifier screen before main app flow) -->
+<script>
+        // Simple logic to toggle pill states within groups
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.bg-surface-container-low');
+            
+            cards.forEach(card => {
+                const pills = card.querySelectorAll('.option-pill');
+                pills.forEach(pill => {
+                    pill.addEventListener('click', () => {
+                        // Deselect all in this card
+                        pills.forEach(p => {
+                            p.classList.remove('pill-active');
+                            p.classList.add('pill-inactive');
+                            // Remove checkmark if exists
+                            const icon = p.querySelector('.material-symbols-outlined');
+                            if(icon) icon.remove();
+                        });
+                        
+                        // Select clicked
+                        pill.classList.remove('pill-inactive');
+                        pill.classList.add('pill-active');
+                        
+                        // Add checkmark
+                        const checkIcon = document.createElement('span');
+                        checkIcon.className = 'material-symbols-outlined text-sm';
+                        checkIcon.textContent = 'check';
+                        pill.insertBefore(checkIcon, pill.firstChild);
+                    });
+                });
+            });
+        });
+    </script>
+
+
+</body></html>

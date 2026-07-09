@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PackRight - Calibrating Journey</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdad2",
+                    "inverse-on-surface": "#f4f0ea",
+                    "inverse-primary": "#ffb4a3",
+                    "surface-bright": "#fdf9f3",
+                    "outline": "#8a716c",
+                    "surface-tint": "#a33d25",
+                    "on-surface-variant": "#57423d",
+                    "surface": "#fdf9f3",
+                    "tertiary-fixed": "#f2dfcf",
+                    "secondary-fixed-dim": "#a8d0ae",
+                    "inverse-surface": "#31302d",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e6e2dc",
+                    "secondary-fixed": "#c3edc9",
+                    "on-primary-container": "#fffbff",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fdf9f3",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#fffbff",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#a03b23",
+                    "primary-fixed-dim": "#ffb4a3",
+                    "on-tertiary-fixed": "#231a10",
+                    "on-secondary-container": "#486d50",
+                    "surface-container-highest": "#e6e2dc",
+                    "surface-container-low": "#f7f3ed",
+                    "on-primary-fixed": "#3d0700",
+                    "on-primary-fixed-variant": "#832610",
+                    "secondary-container": "#c3edc9",
+                    "on-secondary-fixed-variant": "#2a4e34",
+                    "on-tertiary-fixed-variant": "#504539",
+                    "on-secondary-fixed": "#00210d",
+                    "secondary": "#42674b",
+                    "surface-container": "#f1ede7",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#c05238",
+                    "surface-dim": "#dddad4",
+                    "tertiary": "#675a4d",
+                    "tertiary-container": "#807264",
+                    "outline-variant": "#dec0b9",
+                    "on-background": "#1c1c18",
+                    "tertiary-fixed-dim": "#d5c4b4",
+                    "on-surface": "#1c1c18",
+                    "surface-container-high": "#ebe8e2",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "margin-mobile": "20px",
+                    "gutter": "16px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "margin-desktop": "auto",
+                    "lg": "40px",
+                    "md": "24px",
+                    "max-width": "1200px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .loading-text-transition {
+            transition: opacity 300ms ease-in-out, transform 300ms ease-out;
+        }
+        .loading-pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex items-center justify-center p-margin-mobile font-body-md text-body-md text-on-surface antialiased overflow-hidden">
+<!-- Ambient background layer for warmth -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface-bright via-background to-surface-container-low opacity-80 pointer-events-none"></div>
+<!-- Centered Immersive Card -->
+<main class="relative z-10 w-full max-w-[400px] bg-surface-container-lowest rounded-xl p-lg flex flex-col items-center justify-center text-center ring-1 ring-outline-variant/20 shadow-[0_16px_32px_-8px_rgba(107,94,81,0.1)]">
+<!-- 3D Animation Container -->
+<div class="relative w-48 h-48 mb-8 flex items-center justify-center">
+<!-- Decorative Ambient Glow Behind Animation -->
+<div class="absolute inset-0 bg-secondary-fixed-dim/30 rounded-full blur-3xl loading-pulse-ring"></div>
+<!-- Target Animation -->
+<!-- STITCH_THREEJS_START:ANIMATION_2 class="relative z-10 w-full h-full drop-shadow-md" -->
+<div class="relative z-10 w-full h-full drop-shadow-md" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_2" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_2');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const container = document.getElementById('animation-container') || document.body;
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+container.appendChild(renderer.domElement);
+
+// Create a stylized suitcase/bag
+const bodyGeom = new THREE.BoxGeometry(2, 1.5, 0.8);
+const material = new THREE.MeshPhongMaterial({ color: 0xE06A4E }); // Terracotta
+const body = new THREE.Mesh(bodyGeom, material);
+scene.add(body);
+
+const handleGeom = new THREE.TorusGeometry(0.3, 0.05, 16, 32, Math.PI);
+const handle = new THREE.Mesh(handleGeom, material);
+handle.position.y = 0.75;
+scene.add(handle);
+
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(5, 5, 5);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x404040, 2));
+
+camera.position.z = 5;
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    // Gentle floating and pulsing
+    const time = Date.now() * 0.002;
+    body.position.y = Math.sin(time) * 0.2;
+    handle.position.y = 0.75 + Math.sin(time) * 0.2;
+    
+    body.rotation.y += 0.01;
+    handle.rotation.y += 0.01;
+    
+    const scale = 1 + Math.sin(time) * 0.05;
+    body.scale.set(scale, scale, scale);
+    handle.scale.set(scale, scale, scale);
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+});
+
+animate();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_2 -->
+</div>
+<!-- Dynamic Text Area -->
+<div class="h-[80px] w-full flex flex-col items-center justify-start overflow-hidden">
+<h1 class="font-headline-md text-headline-md text-primary mb-2">Curating Journey</h1>
+<div class="relative w-full h-6 flex justify-center items-center">
+<p class="absolute font-body-md text-body-md text-on-surface-variant loading-text-transition opacity-100 translate-y-0 text-center w-full px-4" id="dynamic-status">
+                    Analyzing destination climate matrices...
+                </p>
+</div>
+</div>
+<!-- Progress Indicator Track (Visual only) -->
+<div class="w-full h-1 mt-6 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-full origin-left rounded-full" style="animation: load-progress 3s ease-in-out forwards;"></div>
+</div>
+</main>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusMessages = [
+                "Analyzing destination climate matrices...",
+                "Calibrating baggage size boundaries...",
+                "Assembling smart list rows..."
+            ];
+            
+            const statusElement = document.getElementById('dynamic-status');
+            let messageIndex = 0;
+
+            // Cycle text every 1.5s
+            const intervalId = setInterval(() => {
+                // Fade out and move up slightly
+                statusElement.style.opacity = '0';
+                statusElement.style.transform = 'translateY(-10px)';
+                
+                setTimeout(() => {
+                    // Update text, prep for fade in
+                    messageIndex = (messageIndex + 1) % statusMessages.length;
+                    statusElement.textContent = statusMessages[messageIndex];
+                    
+                    // Reset position below to slide up
+                    statusElement.style.transform = 'translateY(10px)';
+                    
+                    // Force reflow
+                    void statusElement.offsetWidth;
+                    
+                    // Fade in and settle
+                    statusElement.style.opacity = '1';
+                    statusElement.style.transform = 'translateY(0)';
+                }, 300); // Wait for fade out to complete before swapping text
+                
+            }, 1500);
+
+            // Auto-timeout after 3 seconds
+            setTimeout(() => {
+                clearInterval(intervalId);
+                // Visual completion state before redirect
+                statusElement.style.opacity = '0';
+                setTimeout(() => {
+                    statusElement.textContent = "Ready.";
+                    statusElement.classList.add('text-primary', 'font-medium');
+                    statusElement.style.opacity = '1';
+                    statusElement.style.transform = 'translateY(0)';
+                    
+                    // Simulated navigation
+                    console.log("[Navigation] Proceeding to Screen 3...");
+                    // window.location.href = '#screen-3';
+                }, 300);
+            }, 3000);
+        });
+    </script>
+<style>
+        @keyframes load-progress {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(0.6); }
+            100% { transform: scaleX(1); }
+        }
+    </style>
+</body></html>

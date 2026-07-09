@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://packright-20.vercel.app/sitemap.xml

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PackRight - Launchpad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdad2",
+                    "inverse-on-surface": "#f4f0ea",
+                    "inverse-primary": "#ffb4a3",
+                    "surface-bright": "#fdf9f3",
+                    "outline": "#8a716c",
+                    "surface-tint": "#a33d25",
+                    "on-surface-variant": "#57423d",
+                    "surface": "#fdf9f3",
+                    "tertiary-fixed": "#f2dfcf",
+                    "secondary-fixed-dim": "#a8d0ae",
+                    "inverse-surface": "#31302d",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e6e2dc",
+                    "secondary-fixed": "#c3edc9",
+                    "on-primary-container": "#fffbff",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fdf9f3",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#fffbff",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#a03b23",
+                    "primary-fixed-dim": "#ffb4a3",
+                    "on-tertiary-fixed": "#231a10",
+                    "on-secondary-container": "#486d50",
+                    "surface-container-highest": "#e6e2dc",
+                    "surface-container-low": "#f7f3ed",
+                    "on-primary-fixed": "#3d0700",
+                    "on-primary-fixed-variant": "#832610",
+                    "secondary-container": "#c3edc9",
+                    "on-secondary-fixed-variant": "#2a4e34",
+                    "on-tertiary-fixed-variant": "#504539",
+                    "on-secondary-fixed": "#00210d",
+                    "secondary": "#42674b",
+                    "surface-container": "#f1ede7",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#c05238",
+                    "surface-dim": "#dddad4",
+                    "tertiary": "#675a4d",
+                    "tertiary-container": "#807264",
+                    "outline-variant": "#dec0b9",
+                    "on-background": "#1c1c18",
+                    "tertiary-fixed-dim": "#d5c4b4",
+                    "on-surface": "#1c1c18",
+                    "surface-container-high": "#ebe8e2",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "margin-mobile": "20px",
+                    "gutter": "16px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "margin-desktop": "auto",
+                    "lg": "40px",
+                    "md": "24px",
+                    "max-width": "1200px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); }
+        .ambient-shadow-low { box-shadow: 0 4px 16px rgba(107, 94, 81, 0.05); }
+        .ambient-shadow-high { box-shadow: 0 8px 24px rgba(107, 94, 81, 0.1); }
+        
+        /* Modal Transitions */
+        .modal-overlay { opacity: 0; transition: opacity 0.2s ease-out; pointer-events: none; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content { transform: translateY(20px); opacity: 0; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .modal-overlay.active .modal-content { transform: translateY(0); opacity: 1; }
+    </style>
+</head>
+<body class="text-on-background min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="w-full max-w-[440px] relative flex flex-col min-h-screen bg-surface mx-auto shadow-sm">
+<!-- TopAppBar -->
+<header class="bg-background docked full-width top-0 flex justify-between items-center w-full px-margin-mobile py-base max-w-max-width mx-auto">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">PackRight</h1>
+<button aria-label="Settings" class="text-on-surface-variant hover:opacity-80 transition-opacity p-2 rounded-full hover:bg-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary-fixed" id="settingsBtn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col px-margin-mobile pt-lg pb-xl">
+<div class="mb-lg">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-sm">Where to next?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Describe your trip in detail. We'll build the perfect packing list.</p>
+</div>
+<!-- Textarea -->
+<div class="flex-grow flex flex-col mb-lg">
+<label class="sr-only" for="tripPrompt">Describe your trip</label>
+<div class="relative flex-grow flex flex-col ambient-shadow-low rounded-[24px] bg-surface-container-low border-b-2 border-outline/30 focus-within:border-primary transition-colors overflow-hidden">
+<textarea class="w-full flex-grow p-md bg-transparent border-none resize-none focus:ring-0 font-body-lg text-body-lg text-on-surface placeholder:text-on-surface-variant/60" id="tripPrompt" placeholder="e.g., 12 days in Tokyo and Osaka in chilly March, staying in backpacker hostels, flying budget airlines with tight bags, lots of daily walking, but one formal dinner planned..."></textarea>
+<div class="absolute bottom-md right-md flex items-center gap-2"><button aria-label="Voice Input" class="w-12 h-12 flex items-center justify-center rounded-full bg-[#E06A4E] text-white shadow-lg hover:opacity-90 active:scale-95 transition-all group relative" id="voiceInputBtn">
+<span class="material-symbols-outlined text-[24px]">mic</span>
+<!-- Pulsing ring for active state (hidden by default) -->
+<span class="absolute inset-0 rounded-full bg-[#E06A4E] animate-ping opacity-0 group-[.is-listening]:opacity-40"></span>
+</button>
+<span class="material-symbols-outlined text-primary/50 text-[32px] pointer-events-none" style="font-variation-settings: 'FILL' 1;">edit_document</span>
+</div>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full py-md px-lg bg-primary text-on-primary font-headline-md text-headline-md rounded-[16px] ambient-shadow-low active:shadow-none active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-2 group">
+<span>Start Packing</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</main>
+<div class="fixed bottom-32 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-opacity duration-300" id="voiceToast">
+<div class="bg-inverse-surface text-inverse-on-surface px-md py-sm rounded-full flex items-center gap-2 shadow-lg">
+<span class="w-2 h-2 rounded-full bg-[#E06A4E] animate-pulse"></span>
+<span class="font-label-md">Listening...</span>
+</div>
+</div></div>
+<!-- Settings Modal -->
+<div class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-margin-mobile bg-inverse-surface/40 backdrop-blur-sm" id="settingsModal">
+<div aria-labelledby="modalTitle" aria-modal="true" class="modal-content w-full max-w-[400px] bg-surface rounded-[24px] ambient-shadow-high p-lg" role="dialog">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface" id="modalTitle">Configuration</h3>
+<button aria-label="Close" class="text-on-surface-variant hover:bg-surface-variant/50 p-2 rounded-full transition-colors" id="closeModalBtn">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="apiKey">Gemini API Key</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant/60">key</span>
+<input class="w-full pl-lg pr-sm py-sm bg-surface-container-low border-b-2 border-outline/30 focus:border-primary focus:ring-0 rounded-t-lg font-body-md text-body-md text-on-surface" id="apiKey" placeholder="Enter your key" type="password"/>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Required for AI-powered list generation.</p>
+</div>
+<button class="w-full py-sm bg-tertiary-container text-on-tertiary-container font-headline-md text-headline-md rounded-lg hover:opacity-90 transition-opacity" id="saveConfigBtn">
+                    Save Changes
+                </button>
+</div>
+</div>
+</div>
+<script>
+        const settingsBtn = document.getElementById('settingsBtn');
+        const settingsModal = document.getElementById('settingsModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const saveConfigBtn = document.getElementById('saveConfigBtn');
+
+        function openModal() {
+            settingsModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                document.getElementById('apiKey').focus();
+            }, 100);
+        }
+
+        function closeModal() {
+            settingsModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        settingsBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        saveConfigBtn.addEventListener('click', () => {
+            // Simulate save
+            closeModal();
+        });
+
+        settingsModal.addEventListener('click', (e) => {
+            if (e.target === settingsModal) {
+                closeModal();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && settingsModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
+</body></html>
