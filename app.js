@@ -19,14 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const settingsModal = document.getElementById('settingsModal');
-    const geminiKeyInput = document.getElementById('geminiKeyInput');
     const saveSettingsBtn = document.getElementById('saveSettingsBtn');
     const closeSettingsBtn = document.getElementById('closeSettingsBtn');
     const openSettingsBtn = document.getElementById('openSettingsBtn');
 
     // --- Initialization ---
-    const savedKey = localStorage.getItem('packright_gemini_key');
-    if (savedKey) geminiKeyInput.value = savedKey;
     const savedSupabaseUrl = localStorage.getItem('packright_supabase_url') || 'https://tttbzsjewgiidplnwfyu.supabase.co';
     const savedSupabaseKey = localStorage.getItem('packright_supabase_key') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0dGJ6c2pld2dpaWRwbG53Znl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3NjUwMjksImV4cCI6MjA5NzM0MTAyOX0.KdinQYm4QyKeSbmkauVPB15z6wUJBKlJPaWztDtWK5U';
     const supabaseUrlInput = document.getElementById('supabaseUrlInput');
@@ -162,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     saveSettingsBtn.addEventListener('click', () => {
-        localStorage.setItem('packright_gemini_key', geminiKeyInput.value.trim());
         const supabaseUrlInput = document.getElementById('supabaseUrlInput');
         const supabaseKeyInput = document.getElementById('supabaseKeyInput');
         if (supabaseUrlInput && supabaseKeyInput) {

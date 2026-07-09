@@ -1,37 +1,15 @@
 // api.js
 class API {
-    static getApiKey() {
-        return localStorage.getItem('packright_gemini_key');
-    }
-
     static async callGemini(systemInstruction, userPrompt) {
-        const apiKey = this.getApiKey();
-        if (!apiKey) {
-            alert('Please set your Gemini API key in settings.');
-            document.getElementById('settingsModal').classList.remove('hidden');
-            document.getElementById('settingsModal').classList.add('flex');
-            throw new Error('API Key missing');
-        }
-
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
-        
-        const payload = {
-            system_instruction: { parts: [{ text: systemInstruction }] },
-            contents: [{ parts: [{ text: userPrompt }] }],
-            generationConfig: {
-                response_mime_type: "application/json"
-            }
-        };
-
-        const response = await fetch(url, {
+        const response = await fetch('/api/generate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+            body: JSON.stringify({ systemInstruction, userPrompt })
         });
 
         if (!response.ok) {
             const err = await response.json();
-            throw new Error(err.error?.message || 'Failed to fetch from Gemini API');
+            throw new Error(err.error || 'Failed to fetch from server');
         }
 
         const data = await response.json();
