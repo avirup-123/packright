@@ -6,6 +6,22 @@
     <title>PackRight | The AI Travel Packing Assistant</title>
     <meta name="description" content="Stop forgetting travel essentials. PackRight uses AI to instantly generate a personalized, context-aware packing checklist based on your destination, weather, and activities.">
     
+    <!-- PWA / App Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#E06A4E">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/avirupsarker1999/packright-2.0/main/public/logo.png">
+    
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful');
+          }).catch(err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
     <!-- OpenGraph / Social Meta Tags -->
     <meta property="og:title" content="PackRight | Free AI Travel Packing Checklist & List Generator">
     <meta property="og:description" content="Never forget a travel essential again. PackRight uses AI to instantly generate a personalized vacation packing list tailored to your destination, weather, and itinerary.">

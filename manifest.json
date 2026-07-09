@@ -1,0 +1,21 @@
+{
+  "name": "PackRight",
+  "short_name": "PackRight",
+  "description": "The AI Travel Packing Assistant.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6F0",
+  "theme_color": "#E06A4E",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/avirupsarker1999/packright-2.0/main/public/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/avirupsarker1999/packright-2.0/main/public/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
