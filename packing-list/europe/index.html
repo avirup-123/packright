@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What to Pack for Europe — Free AI Packing List | PackRight</title>
+    <meta name="description" content="Not sure what to pack for Europe? Get a free personalized Europe packing list in seconds. Describe your trip — cities, duration, activities — and PackRight's AI builds your checklist instantly.">
+    
+    <!-- PWA / App Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#E06A4E">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/avirupsarker1999/packright-2.0/main/public/logo.png">
+    
+    <!-- OpenGraph / Social Meta Tags -->
+    <meta property="og:title" content="What to Pack for Europe — Free AI Packing List">
+    <meta property="og:description" content="Get a free personalized Europe packing list in seconds. No sign-up required.">
+    <meta property="og:url" content="https://packright-20.vercel.app/packing-list/europe">
+    <meta property="og:type" content="website">
+
+    <link rel="canonical" href="https://packright-20.vercel.app/packing-list/europe">
+
+    <!-- Google Analytics 4 -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNWZ3GJHRZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VNWZ3GJHRZ');
+    </script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        baseCanvas: '#F5F0EB',
+                        primary: '#D4735E',
+                        success: '#5F8567',
+                        neutralText: '#222222'
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- App scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/api.js" defer></script>
+    <script src="/app.js" defer></script>
+
+    <!-- Product Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Europe Packing List Generator — PackRight",
+      "description": "Free AI-powered packing list generator for trips to Europe. Describe your itinerary and get a personalized, categorized checklist instantly.",
+      "url": "https://packright-20.vercel.app/packing-list/europe",
+      "brand": { "@type": "Brand", "name": "PackRight" },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "category": "Travel Planning Tool",
+      "keywords": "Europe packing list, what to pack for Europe, Europe travel checklist, packing for Europe"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": []
+    }
+    </script>
+
+    <style>
+        /* Hide app.js required buttons to prevent JS errors, but keep DOM intact */
+        #authContainer, #openSettingsBtn, #shareModal { display: none !important; }
+        
+        body { background-color: #F5F0EB; }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-top: 3px solid #D4735E;
+        }
+        .serif-italic { font-family: 'Outfit', serif; font-style: italic; }
+        
+        .progress-circle {
+            transition: stroke-dashoffset 0.5s ease;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        
+        /* Checkbox interactions for generated list */
+        .check-btn { transition: all 0.2s ease; }
+        .check-btn:hover { background-color: #f3f4f6; }
+        .is-checked .check-circle { border-color: #5F8567; background-color: #5F8567; }
+        .is-checked .check-icon { opacity: 1; stroke-dashoffset: 0; }
+        .is-checked .item-name { color: #222222; opacity: 0.5; text-decoration: line-through; }
+        .check-icon {
+            opacity: 0;
+            stroke-dasharray: 24;
+            stroke-dashoffset: 24;
+            transition: all 0.3s ease;
+        }
+
+        #voiceInputBtn.is-listening .animate-ping { opacity: 0.4; }
+    </style>
+</head>
+<body class="font-poppins text-neutralText antialiased min-h-screen flex flex-col p-0 md:p-4 pb-10 md:pb-20">
+
+    <!-- Element 1: Page Header Bar -->
+    <div class="w-full max-w-3xl mx-auto px-6 md:px-0 pt-6 md:pt-8 pb-4 md:pb-6 flex justify-between items-center">
+        <a href="/" class="font-outfit text-2xl md:text-3xl font-bold tracking-tight text-primary hover:opacity-80 transition-opacity">PackRight</a>
+        <!-- Hidden elements for app.js compatibility -->
+        <div id="authContainer">
+            <button id="loginBtn"></button>
+            <div id="userProfile"><img id="userAvatar"><button id="logoutBtn"></button></div>
+        </div>
+        <button id="openSettingsBtn"></button>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="w-full max-w-3xl mx-auto px-4 md:px-0 flex flex-col gap-8">
+        
+        <!-- Element 2: Page Headline -->
+        <h1 class="serif-italic text-primary text-[26px] md:text-[36px] leading-tight mt-2">Your Packing Checklist for Europe 👇</h1>
+
+        <!-- Element 3: Destination Context Block -->
+        <p class="font-poppins font-normal text-neutralText/60 text-[15px] md:text-[16px] leading-[1.6]">
+            Europe spans over 40 countries, dozens of climates, and thousands of years of culture — which makes packing for it genuinely tricky. A summer trip to the Amalfi Coast calls for completely different gear than a winter break in Prague or a backpacking run through Scandinavia. Add to that the mix of budget airlines with strict carry-on rules, cobblestone streets that destroy the wrong shoes, and a culture of dressing up slightly more than you might at home — and the generic packing list you find on most travel blogs is almost never right for your specific trip.
+            <br><br>
+            The tool below generates a personalized list based on your exact itinerary — where you're going, what you're doing, and how long you'll be there. The pre-filled example below is a starting point. Edit it to match your actual trip before hitting Generate.
+        </p>
+
+        <!-- Element 4: The Tool (pre-filled) -->
+        <!-- App.js screens structure -->
+        <div class="card p-6 relative">
+            <div id="screen-launchpad" class="w-full flex-1 flex flex-col justify-center">
+                <div class="relative flex-1 min-h-[160px] md:min-h-[180px] flex flex-col">
+                    <textarea id="mainPromptInput" class="w-full flex-1 rounded-2xl border border-neutralText/10 p-4 md:p-5 pb-16 bg-baseCanvas/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary shadow-inner resize-none text-base md:text-lg leading-relaxed font-poppins" placeholder="Describe your trip...">14 days trip to Europe with friends, visiting multiple cities, mix of sightseeing, local food, nightlife, and some day trips</textarea>
+                    
+                    <div class="absolute bottom-4 right-4 flex items-center gap-3">
+                        <button aria-label="Voice Input" class="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-white shadow-lg hover:opacity-90 active:scale-95 transition-all group relative" id="voiceInputBtn">
+                            <span class="material-symbols-outlined text-[24px]">mic</span>
+                            <span class="absolute inset-0 rounded-full bg-primary animate-ping opacity-0"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-4 flex flex-col gap-2">
+                    <button id="generateListBtn" class="w-full py-4 bg-primary text-white rounded-full font-poppins font-bold text-lg hover:bg-primary/90 active:scale-[0.98] shadow-lg transition-all">Generate My Packing List</button>
+                    <p class="text-center font-poppins font-normal text-[13px] text-neutralText/50 mt-1">Edit the description above to match your specific trip before generating.</p>
+                </div>
+            </div>
+
+            <!-- Clarifier Screen (hidden by default) -->
+            <div id="screen-clarifier" class="hidden flex-col items-center justify-center py-6 h-full text-center">
+                <h3 class="font-outfit text-xl font-medium mb-2">Wait, one quick thing...</h3>
+                <p class="text-neutralText/60 mb-6 text-sm max-w-sm">Answer this so I can make your list perfectly accurate.</p>
+                <div id="clarifierQuestionsContainer" class="w-full max-w-sm flex flex-col gap-4 text-left"></div>
+                <button id="submitClarifierBtn" class="mt-8 px-8 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors hidden shadow-md">Continue generating</button>
+            </div>
+
+            <!-- Loading Screen (hidden by default) -->
+            <div id="screen-loading" class="hidden flex-col items-center justify-center py-10 h-full">
+                <div class="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-6"></div>
+                <h3 class="font-outfit text-xl font-medium text-neutralText" id="loadingHeadline">Analyzing your trip...</h3>
+                <p class="text-neutralText/60 mt-2 text-sm" id="loadingSubtext">Checking weather patterns</p>
+            </div>
+        </div>
+
+        <!-- Generated Checklist Container (hidden initially, app.js populates this) -->
+        <div id="screen-checklist" class="hidden w-full flex-col bg-white rounded-3xl overflow-hidden card">
+            <div class="p-6 md:p-8 pb-4 border-b border-neutralText/5 relative">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 id="checklistTripName" class="font-outfit text-2xl font-semibold">Your List</h2>
+                    </div>
+                    <div class="flex gap-2 relative z-10">
+                        <button id="shareBtn" class="p-2 bg-baseCanvas rounded-full hover:bg-primary hover:text-white transition-colors text-primary" aria-label="Share">
+                            <span class="material-symbols-outlined text-[20px]">ios_share</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-4 bg-baseCanvas/50 p-4 rounded-2xl">
+                    <div class="relative w-12 h-12 shrink-0">
+                        <svg class="w-12 h-12 transform -rotate-90" viewBox="0 0 36 36">
+                            <path class="text-neutralText/10" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path id="progressCircle" class="text-success progress-circle" stroke-width="3" stroke-dasharray="100, 100" stroke="currentColor" fill="none" stroke-linecap="round" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-sm font-medium text-neutralText/60">Packing Progress</div>
+                        <div class="font-outfit font-semibold text-lg"><span id="packedCount">0</span> / <span id="totalCount">0</span> items</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="checklistCategories" class="p-4 md:p-6 flex-1 overflow-y-auto space-y-4"></div>
+            
+            <!-- Hidden modals for app.js (they won't display unless clicked, but app.js needs them) -->
+            <div id="shareModal" class="hidden absolute inset-0 z-50">
+                <button id="shareWhatsappBtn"></button>
+                <button id="shareEmailBtn"></button>
+                <button id="shareCopyBtn"></button>
+                <button id="closeShareModalBtn"></button>
+            </div>
+            <div id="settingsModal" class="hidden">
+                <button id="saveSettingsBtn"></button>
+                <button id="closeSettingsBtn"></button>
+            </div>
+        </div>
+
+        <!-- Element 5: Sample Packing List -->
+        <div class="card p-6">
+            <div class="flex justify-between items-center mb-6">
+                <span class="font-poppins font-medium text-[13px] text-neutralText/50">Sample list — 14 days in Europe, general</span>
+                <span class="font-poppins font-normal text-[12px] text-primary hidden md:inline">Edit your trip above to get your personalized version →</span>
+            </div>
+            <p class="font-poppins font-normal text-[12px] text-neutralText/40 mb-4 uppercase tracking-wider">Preview only — generate your personalized list above</p>
+
+            <div class="flex flex-col gap-4">
+                
+                <!-- Category: Clothing -->
+                <div class="bg-baseCanvas/30 rounded-2xl p-2 md:p-3 pb-1 border border-neutralText/5">
+                    <div class="flex justify-between items-center px-2 py-1 mb-2">
+                        <h3 class="font-poppins font-semibold text-[15px] text-neutralText">Clothing</h3>
+                        <span class="material-symbols-outlined text-neutralText/30 text-[20px]">expand_more</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Comfortable walking shoes ×2</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">essential — European cities involve significant daily walking on cobblestones</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Versatile jacket</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">layering is key — temperatures vary widely across regions and seasons</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">T-shirts or tops ×5</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Trousers or jeans ×2</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Smart casual outfit ×1</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">for nicer restaurants and evening outings</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Underwear ×7</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Socks ×7</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Lightweight scarf</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">useful for churches and cathedrals that require covered shoulders</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Comfortable sandals or flat shoes ×1</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Sleepwear ×1</span></div>
+                        <div class="flex gap-3 px-2 py-3 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Rain jacket or compact umbrella</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">weather is unpredictable across most of Europe</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category: Toiletries -->
+                <div class="bg-baseCanvas/30 rounded-2xl p-2 md:p-3 pb-1 border border-neutralText/5">
+                    <div class="flex justify-between items-center px-2 py-1 mb-2">
+                        <h3 class="font-poppins font-semibold text-[15px] text-neutralText">Toiletries</h3>
+                        <span class="material-symbols-outlined text-neutralText/30 text-[20px]">expand_more</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Toothbrush and toothpaste</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Deodorant</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Shampoo (travel size)</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Face wash</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Sunscreen</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Lip balm</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Razor</span></div>
+                        <div class="flex gap-3 px-2 py-3 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Any personal medications</span></div>
+                    </div>
+                </div>
+
+                <!-- Category: Documents & Money -->
+                <div class="bg-baseCanvas/30 rounded-2xl p-2 md:p-3 pb-1 border border-neutralText/5">
+                    <div class="flex justify-between items-center px-2 py-1 mb-2">
+                        <h3 class="font-poppins font-semibold text-[15px] text-neutralText">Documents & Money</h3>
+                        <span class="material-symbols-outlined text-neutralText/30 text-[20px]">expand_more</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Passport</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">check expiry — many European countries require 6 months validity beyond travel dates</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Travel insurance documents</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Flight and accommodation confirmations (digital or printed)</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Euros or local currency</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">some countries outside the Eurozone use their own currency — check before you go</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Credit or debit card with low international transaction fees</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Copies of important documents stored separately from originals</span></div>
+                        <div class="flex gap-3 px-2 py-3 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">EHIC or GHIC card if traveling from the UK</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">for EU healthcare access</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category: Electronics -->
+                <div class="bg-baseCanvas/30 rounded-2xl p-2 md:p-3 pb-1 border border-neutralText/5">
+                    <div class="flex justify-between items-center px-2 py-1 mb-2">
+                        <h3 class="font-poppins font-semibold text-[15px] text-neutralText">Electronics</h3>
+                        <span class="material-symbols-outlined text-neutralText/30 text-[20px]">expand_more</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Phone and charger</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Universal plug adapter</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">Europe uses Type C/E/F — check specific countries on your itinerary</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Portable power bank</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Earphones or headphones</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Camera (optional)</span></div>
+                        <div class="flex gap-3 px-2 py-3 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Laptop or tablet if needed</span></div>
+                    </div>
+                </div>
+
+                <!-- Category: Travel Gear -->
+                <div class="bg-baseCanvas/30 rounded-2xl p-2 md:p-3 pb-1 border border-neutralText/5">
+                    <div class="flex justify-between items-center px-2 py-1 mb-2">
+                        <h3 class="font-poppins font-semibold text-[15px] text-neutralText">Travel Gear</h3>
+                        <span class="material-symbols-outlined text-neutralText/30 text-[20px]">expand_more</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Day backpack for city exploration</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Packing cubes</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">highly recommended for multi-city trips</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Padlock</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">for hostel lockers if staying in shared accommodation</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Reusable water bottle</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Small first aid kit (plasters, pain relief, antidiarrheal)</span></div>
+                        <div class="flex gap-3 px-2 py-3 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Lightweight travel towel</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">essential for hostel stays</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category: Europe-Specific -->
+                <div class="bg-baseCanvas/30 rounded-2xl p-2 md:p-3 pb-1 border border-neutralText/5">
+                    <div class="flex justify-between items-center px-2 py-1 mb-2">
+                        <h3 class="font-poppins font-semibold text-[15px] text-neutralText">Europe-Specific</h3>
+                        <span class="material-symbols-outlined text-neutralText/30 text-[20px]">expand_more</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Rail pass or point-to-point train tickets</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">pre-book for significant savings — Eurail, Interrail</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Google Maps offline downloads for each city on your itinerary</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default"><div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0"></div><span class="font-poppins font-normal text-[14px]">Translation app downloaded for offline use</span></div>
+                        <div class="flex gap-3 px-2 py-3 border-b border-neutralText/5 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Small crossbody bag or money belt</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">pickpocketing is common in major tourist areas</span></div>
+                        </div>
+                        <div class="flex gap-3 px-2 py-3 opacity-70 cursor-default">
+                            <div class="w-6 h-6 rounded-full border-2 border-neutralText/20 shrink-0 mt-0.5"></div>
+                            <div class="flex-1"><span class="font-poppins font-normal text-[14px]">Plug adapter specifically for UK</span> <span class="text-[12px] text-neutralText/50 block mt-0.5">if your itinerary includes London (Type G — different from continental Europe)</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Element 6: FAQ Section -->
+        <div class="mt-4">
+            <h2 class="serif-italic text-primary text-[28px] md:text-[32px] leading-tight mb-6">Frequently Asked Questions — Packing for Europe</h2>
+            <div class="card overflow-hidden">
+                <div class="flex flex-col" id="faqAccordion">
+                    <!-- PLACEHOLDER - Insert the FAQ questions and answers here -->
+                    <!-- Example item structure:
+                    <div class="faq-item cursor-pointer p-5 border-b border-neutralText/10 last:border-0 hover:bg-baseCanvas/10 transition-colors">
+                        <div class="flex justify-between items-center gap-4">
+                            <h3 class="font-poppins font-semibold text-[16px] md:text-[18px] text-neutralText">Question here?</h3>
+                            <span class="material-symbols-outlined text-primary transition-transform duration-200 chevron">expand_more</span>
+                        </div>
+                        <div class="faq-answer hidden mt-3 pr-8">
+                            <p class="font-poppins font-normal text-[15px] md:text-[16px] text-neutralText/60 leading-relaxed">Answer here.</p>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Element 7: CTA Strip -->
+        <div class="w-full text-center py-10 mt-4 border-t border-neutralText/10">
+            <h2 class="serif-italic text-primary text-[22px] md:text-[24px] mb-2">Not going to Europe?</h2>
+            <p class="font-poppins font-normal text-[15px] text-neutralText/60 mb-6">PackRight works for any destination in the world. Just describe your trip.</p>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-8 py-4 bg-primary text-white rounded-full font-poppins font-bold text-[16px] hover:bg-primary/90 active:scale-[0.98] shadow-lg transition-all">Generate My Packing List</button>
+        </div>
+
+    </main>
+
+    <!-- Templates for app.js (hidden) -->
+    <template id="categoryTemplate">
+        <div class="bg-baseCanvas/30 rounded-3xl p-3 md:p-4 pb-1 border border-neutralText/5 mb-4 shadow-sm">
+            <div class="flex justify-between items-center px-2 py-1 mb-2 category-header cursor-pointer select-none">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-neutralText/40 category-icon text-[20px]">category</span>
+                    <h3 class="font-outfit font-semibold text-lg text-neutralText category-title"></h3>
+                </div>
+                <span class="material-symbols-outlined text-neutralText/30 transition-transform duration-200 group-expanded:-rotate-180 text-[24px]">expand_more</span>
+            </div>
+            <div class="category-items flex flex-col transition-all duration-300"></div>
+        </div>
+    </template>
+
+    <template id="itemTemplate">
+        <div class="check-btn flex items-start md:items-center gap-3 p-3 md:px-4 md:py-3 rounded-2xl cursor-pointer select-none relative group border border-transparent hover:border-neutralText/5">
+            <div class="relative w-6 h-6 md:w-7 md:h-7 rounded-full border-2 border-neutralText/20 bg-white check-circle transition-colors duration-200 flex items-center justify-center shrink-0 mt-0.5 md:mt-0 shadow-sm">
+                <svg class="w-4 h-4 text-white check-icon absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <div class="flex-1 min-w-0 pr-8">
+                <div class="font-inter font-medium text-[15px] text-neutralText item-name transition-colors duration-200"></div>
+                <div class="text-[13px] text-neutralText/50 item-note leading-snug mt-0.5 hidden"></div>
+            </div>
+        </div>
+    </template>
+    
+    <script>
+        // Simple FAQ Accordion Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqContainer = document.getElementById('faqAccordion');
+            if(faqContainer) {
+                faqContainer.addEventListener('click', (e) => {
+                    const item = e.target.closest('.faq-item');
+                    if(!item) return;
+                    
+                    const answer = item.querySelector('.faq-answer');
+                    const chevron = item.querySelector('.chevron');
+                    
+                    const isOpen = !answer.classList.contains('hidden');
+                    
+                    // Close all others
+                    document.querySelectorAll('.faq-item').forEach(otherItem => {
+                        otherItem.querySelector('.faq-answer').classList.add('hidden');
+                        otherItem.querySelector('.chevron').style.transform = 'rotate(0deg)';
+                    });
+                    
+                    if(!isOpen) {
+                        answer.classList.remove('hidden');
+                        chevron.style.transform = 'rotate(180deg)';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
