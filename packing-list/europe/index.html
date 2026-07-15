@@ -57,6 +57,22 @@
     
     <!-- App scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Pre-clear non-Europe trips to ensure Europe landing page context -->
+    <script>
+        (function() {
+            const activeTrip = localStorage.getItem('packright_active_trip');
+            if (activeTrip) {
+                try {
+                    const trip = JSON.parse(activeTrip);
+                    if (!trip.trip_name || !trip.trip_name.toLowerCase().includes('europe')) {
+                        localStorage.removeItem('packright_active_trip');
+                    }
+                } catch(e) {
+                    localStorage.removeItem('packright_active_trip');
+                }
+            }
+        })();
+    </script>
     <script src="/api.js" defer></script>
     <script src="/app.js" defer></script>
 
@@ -356,7 +372,7 @@
                 </div>
                 <h1 class="font-outfit text-4xl font-bold text-success mb-4">You're All Set!</h1>
                 <p class="font-inter text-lg text-neutralText/80 mb-8">Your bags are perfectly packed and you are ready for your adventure. Have a Great Trip!</p>
-                <a href="/" class="px-8 py-3 bg-white text-success border-2 border-success font-outfit font-semibold text-lg rounded-2xl shadow hover:bg-success/5 transition-all text-center">Plan Another Trip</a>
+                <a href="/" onclick="localStorage.removeItem('packright_active_trip');" class="px-8 py-3 bg-white text-success border-2 border-success font-outfit font-semibold text-lg rounded-2xl shadow hover:bg-success/5 transition-all text-center">Plan Another Trip</a>
             </div>
         </div>
 
