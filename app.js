@@ -75,50 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function loadTripFromSupabase() {
-        if (!supabase || !currentUser) return;
-        try {
-            const { data, error } = await supabase
-                .from('trips')
-                .select('*')
-                .order('created_at', { ascending: false })
-                .limit(1);
-            if (error) throw error;
-            
-            if (data && data.length > 0) {
-                const tripData = data[0];
-                appState.activeTrip = {
-                    id: tripData.id,
-                    trip_name: tripData.trip_name,
-                    categories: tripData.categories || [],
-                    saved_items_state: tripData.saved_items_state || {},
-                    custom_added_items: tripData.custom_added_items || []
-                };
-                showScreen('packing');
-                renderPackingList();
-            } else {
-                showScreen('launchpad');
-            }
-        } catch (e) {
-            console.error('Error fetching from Supabase', e);
-            loadTripFromLocal();
-        }
+        showScreen('launchpad');
     }
 
     function loadTripFromLocal() {
-        const savedTrip = localStorage.getItem('packright_active_trip');
-        if (savedTrip) {
-            try {
-                appState.activeTrip = JSON.parse(savedTrip);
-                showScreen('packing');
-                renderPackingList();
-            } catch(e) {
-                console.error("Failed to parse saved trip", e);
-                localStorage.removeItem('packright_active_trip');
-                showScreen('launchpad');
-            }
-        } else {
-            showScreen('launchpad');
-        }
+        localStorage.removeItem('packright_active_trip');
+        showScreen('launchpad');
     }
 
     if (loginBtn) {
