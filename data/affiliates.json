@@ -1,0 +1,260 @@
+{
+  "_comment_IMPORTANT": [
+    "====================================================================",
+    "PLACEHOLDER AFFILIATE TAGS — REPLACE BEFORE GOING LIVE",
+    "====================================================================",
+    "Every URL below contains 'tag=PACKRIGHT-XX-21' where XX is a region code.",
+    "These are NOT real tags. They are placeholders so the links still work",
+    "as search URLs on Amazon even before you have your Associates account.",
+    "After you sign up at affiliate-program.amazon.com, replace each tag value.",
+    "",
+    "Region codes used:",
+    "  IN  = India       (amazon.in)         tag param: PACKRIGHT-IN-21",
+    "  AE  = UAE         (amazon.ae)         tag param: PACKRIGHT-AE-21",
+    "  GB  = UK          (amazon.co.uk)      tag param: PACKRIGHT-GB-21",
+    "  default = USA/all others (amazon.com) tag param: PACKRIGHT-21",
+    "",
+    "For travel insurance and eSIM: no Amazon links used.",
+    "Replace their 'default' URLs with your real affiliate links when ready.",
+    "===================================================================="
+  ],
+
+  "products": [
+    {
+      "id": "packing-cubes",
+      "name": "Packing Cubes",
+      "label": "Find on Amazon →",
+      "keywords": ["packing cubes", "packing cube", "cube organiser", "cube organizer", "travel cubes"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=packing+cubes&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=packing+cubes&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=packing+cubes&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=packing+cubes&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "universal-adapter",
+      "name": "Universal Travel Adapter",
+      "label": "Find on Amazon →",
+      "keywords": ["universal adapter", "travel adapter", "plug adapter", "power adapter", "universal plug", "travel plug", "world adapter"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=universal+travel+adapter&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=universal+travel+adapter&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=universal+travel+adapter&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=universal+travel+adapter&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "power-bank",
+      "name": "Portable Power Bank",
+      "label": "Find on Amazon →",
+      "keywords": ["power bank", "portable charger", "phone charger", "battery pack", "portable battery", "external battery", "powerbank"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=portable+power+bank&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=portable+power+bank&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=portable+power+bank&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=portable+power+bank&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "travel-towel",
+      "name": "Travel Towel",
+      "label": "Find on Amazon →",
+      "keywords": ["travel towel", "microfibre towel", "microfiber towel", "quick dry towel", "quick-dry towel", "compact towel"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=microfibre+travel+towel&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=microfibre+travel+towel&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=microfibre+travel+towel&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=microfiber+travel+towel&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "padlock",
+      "name": "Travel Padlock",
+      "label": "Find on Amazon →",
+      "keywords": ["padlock", "travel lock", "luggage lock", "tsa lock", "tsa padlock", "combination lock"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=tsa+travel+lock&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=tsa+travel+lock&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=tsa+travel+lock&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=tsa+travel+lock&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "luggage-scale",
+      "name": "Luggage Scale",
+      "label": "Find on Amazon →",
+      "keywords": ["luggage scale", "baggage scale", "travel scale", "suitcase scale", "luggage weigher"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=luggage+scale&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=luggage+scale&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=luggage+scale&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=luggage+scale&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "neck-pillow",
+      "name": "Travel Neck Pillow",
+      "label": "Find on Amazon →",
+      "keywords": ["neck pillow", "travel pillow", "inflatable pillow", "airplane pillow", "flight pillow", "memory foam pillow travel"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=travel+neck+pillow&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=travel+neck+pillow&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=travel+neck+pillow&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=travel+neck+pillow&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "eye-mask",
+      "name": "Sleep Eye Mask",
+      "label": "Find on Amazon →",
+      "keywords": ["eye mask", "sleep mask", "travel eye mask", "sleeping mask", "eye shade", "blindfold sleep"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=sleep+eye+mask+travel&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=sleep+eye+mask+travel&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=sleep+eye+mask&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=sleep+eye+mask+travel&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "compression-bags",
+      "name": "Compression Packing Bags",
+      "label": "Find on Amazon →",
+      "keywords": ["compression bags", "vacuum bags", "space saver bags", "space saving bags", "roll up bags", "compression packing bags"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=compression+packing+bags+travel&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=compression+bags+travel&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=compression+packing+bags&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=compression+packing+bags+travel&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "money-belt",
+      "name": "Travel Money Belt",
+      "label": "Find on Amazon →",
+      "keywords": ["money belt", "travel wallet", "anti-theft belt", "security belt", "hidden wallet", "anti theft pouch", "rfid belt"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=travel+money+belt&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=travel+money+belt&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=travel+money+belt&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=travel+money+belt&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "cable-organiser",
+      "name": "Cable Organiser Pouch",
+      "label": "Find on Amazon →",
+      "keywords": ["cable organiser", "cable organizer", "cable pouch", "tech organiser", "tech organizer", "cord organiser", "electronics organiser"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=cable+organiser+travel&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=cable+organiser+travel&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=cable+organiser+bag&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=cable+organizer+travel+bag&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "water-bottle",
+      "name": "Reusable Travel Water Bottle",
+      "label": "Find on Amazon →",
+      "keywords": ["reusable water bottle", "water bottle", "travel bottle", "refillable bottle", "collapsible water bottle", "foldable water bottle"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=reusable+water+bottle+travel&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=reusable+water+bottle&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=reusable+water+bottle+travel&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=reusable+water+bottle+travel&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "travel-umbrella",
+      "name": "Compact Travel Umbrella",
+      "label": "Find on Amazon →",
+      "keywords": ["travel umbrella", "compact umbrella", "foldable umbrella", "mini umbrella", "pocket umbrella", "windproof umbrella"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=compact+travel+umbrella&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=compact+travel+umbrella&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=compact+travel+umbrella&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=compact+travel+umbrella&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "sunscreen",
+      "name": "Travel Sunscreen",
+      "label": "Find on Amazon →",
+      "keywords": ["sunscreen", "sun cream", "spf", "sunblock", "sun protection", "sunlotion", "sun lotion", "travel sunscreen"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=sunscreen+spf+travel+size&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=sunscreen+travel+size&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=sunscreen+travel+size+spf50&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=travel+size+sunscreen+spf50&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "insect-repellent",
+      "name": "Insect Repellent",
+      "label": "Find on Amazon →",
+      "keywords": ["insect repellent", "mosquito repellent", "bug spray", "deet", "mosquito spray", "insect spray", "bug repellent"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=mosquito+repellent+travel&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=insect+repellent+travel&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=insect+repellent+travel&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=insect+repellent+travel&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "first-aid-kit",
+      "name": "Travel First Aid Kit",
+      "label": "Find on Amazon →",
+      "keywords": ["first aid kit", "medical kit", "travel first aid", "first aid bag", "emergency kit", "travel medical kit"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=travel+first+aid+kit&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=travel+first+aid+kit&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=travel+first+aid+kit&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=travel+first+aid+kit&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "motion-sickness",
+      "name": "Motion Sickness Tablets",
+      "label": "Find on Amazon →",
+      "keywords": ["sea sickness tablets", "motion sickness tablets", "travel sickness", "sea sickness pills", "motion sickness pills", "travel sickness tablets", "anti nausea", "dramamine"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=motion+sickness+tablets+travel&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=motion+sickness+tablets&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=travel+sickness+tablets&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=motion+sickness+tablets+travel&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "id": "daypack",
+      "name": "Daypack / Day Backpack",
+      "label": "Find on Amazon →",
+      "keywords": ["daypack", "day backpack", "small backpack", "day bag", "day pack", "mini backpack", "lightweight backpack"],
+      "links": {
+        "IN":      "https://www.amazon.in/s?k=lightweight+daypack+travel&tag=PACKRIGHT-IN-21",
+        "AE":      "https://www.amazon.ae/s?k=daypack+travel+backpack&tag=PACKRIGHT-AE-21",
+        "GB":      "https://www.amazon.co.uk/s?k=daypack+backpack+travel&tag=PACKRIGHT-GB-21",
+        "default": "https://www.amazon.com/s?k=lightweight+daypack+backpack&tag=PACKRIGHT-21"
+      }
+    },
+    {
+      "_comment": "TRAVEL INSURANCE — NOT an Amazon product. Replace 'default' URL with your real affiliate link from WorldNomads or similar. No regional links needed — the site handles that itself.",
+      "id": "travel-insurance",
+      "name": "Travel Insurance",
+      "label": "Get a quote →",
+      "keywords": ["travel insurance", "trip insurance", "holiday insurance", "travel cover", "travel coverage"],
+      "links": {
+        "default": "https://www.worldnomads.com"
+      }
+    },
+    {
+      "_comment": "eSIM — NOT an Amazon product. Replace 'default' URL with your real Airalo affiliate link. No regional links needed.",
+      "id": "esim",
+      "name": "eSIM / Travel SIM",
+      "label": "Get eSIM →",
+      "keywords": ["esim", "e-sim", "pocket wifi", "travel sim", "local sim", "data sim", "travel data", "wifi router travel"],
+      "links": {
+        "default": "https://www.airalo.com"
+      }
+    }
+  ]
+}

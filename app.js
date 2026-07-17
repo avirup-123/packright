@@ -463,6 +463,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkIcon = clone.querySelector('.check-icon');
 
         nameEl.textContent = item.name;
+
+        // ── Affiliate Button Injection ───────────────────────────────────────────
+        // Ask the affiliate system if this item has a matching product.
+        // window.PackRightAffiliates is defined in affiliate.js.
+        // If it's not loaded (e.g. the script failed), we skip gracefully.
+        // The button is inserted RIGHT AFTER the item name, before the context note.
+        try {
+            if (window.PackRightAffiliates && window.PackRightAffiliates.isReady()) {
+                const affiliateBtn = window.PackRightAffiliates.buildAffiliateButton(item.name);
+                if (affiliateBtn) {
+                    // The name wrapper needs to allow clicks on the affiliate link
+                    // We remove pointer-events-none from the flex-1 container and
+                    // re-apply it only to nameEl and contextEl so check-on-click still works
+                    const nameWrapper = nameEl.closest('.flex-1');
+                    if (nameWrapper) {
+                        nameWrapper.classList.remove('pointer-events-none');
+                        nameEl.style.pointerEvents = 'none';
+                        contextEl.style.pointerEvents = 'none';
+                        // Insert affiliate button between item name and context note
+                        nameEl.parentNode.insertBefore(affiliateBtn, contextEl);
+                    }
+                }
+            }
+        } catch (affiliateErr) {
+            // Affiliate button injection failed silently — item renders as normal
+            console.warn('[PackRight Affiliates] Button injection failed for:', item.name, affiliateErr.message);
+        }
         
         if (item.context_note) {
             contextEl.textContent = item.context_note;
@@ -586,6 +613,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         updateProgress();
+
+        // ── Disclosure Line ─────────────────────────────────────────────────────
+        // Amazon Associates ToS requires this disclosure whenever affiliate links
+        // are displayed. Always shown, unconditionally, on every generated list.
+        // We remove any existing one first to prevent duplication on re-renders.
+        try {
+            const existingDisclosure = packingListContainer.querySelector('#affiliate-disclosure');
+            if (existingDisclosure) existingDisclosure.remove();
+
+            if (window.PackRightAffiliates) {
+                packingListContainer.appendChild(window.PackRightAffiliates.buildDisclosureElement());
+            }
+        } catch (disclosureErr) {
+            console.warn('[PackRight Affiliates] Disclosure injection failed:', disclosureErr.message);
+        }
     }
 
     // --- Share Trip Logic ---
