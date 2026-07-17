@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "src": "/data/(.*)",
+      "dest": "/data/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
