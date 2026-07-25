@@ -72,6 +72,30 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             loadTripFromLocal();
         }
+        
+        handleUrlQueryParams();
+    }
+
+    function handleUrlQueryParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const promptParam = urlParams.get('prompt');
+        const focusParam = urlParams.get('focus');
+        const mainPromptInput = document.getElementById('mainPromptInput');
+
+        if (mainPromptInput) {
+            if (promptParam) {
+                mainPromptInput.value = decodeURIComponent(promptParam);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => {
+                    mainPromptInput.focus();
+                }, 500);
+            } else if (focusParam === 'true') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => {
+                    mainPromptInput.focus();
+                }, 500);
+            }
+        }
     }
 
     async function loadTripFromSupabase() {

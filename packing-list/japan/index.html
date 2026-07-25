@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What to Pack for Europe — Free AI Packing List | PackRight</title>
-    <meta name="description" content="Not sure what to pack for Europe? Get a free personalized Europe packing list in seconds. Describe your trip — cities, duration, activities — and PackRight's AI builds your checklist instantly.">
+    <title>What to Pack for Japan — Free AI Packing List | PackRight</title>
+    <meta name="description" content="Not sure what to pack for Japan? Get a free personalized Japan packing list in seconds. Describe your trip — cities, duration, activities — and PackRight's AI builds your checklist instantly.">
     
     <!-- PWA / App Meta Tags -->
     <link rel="manifest" href="/manifest.json">
@@ -12,15 +12,14 @@
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/avirupsarker1999/packright-2.0/main/public/logo.png">
     
     <!-- OpenGraph / Social Meta Tags -->
-    <meta property="og:title" content="What to Pack for Europe — Free AI Packing List">
-    <meta property="og:description" content="Get a free personalized Europe packing list in seconds. No sign-up required.">
-    <meta property="og:url" content="https://packright-20.vercel.app/packing-list/europe">
+    <meta property="og:title" content="What to Pack for Japan — Free AI Packing List">
+    <meta property="og:description" content="Get a free personalized Japan packing list in seconds. No sign-up required.">
+    <meta property="og:url" content="https://packright-20.vercel.app/packing-list/japan">
     <meta property="og:type" content="website">
 
-    <link rel="canonical" href="https://packright-20.vercel.app/packing-list/europe">
+    <link rel="canonical" href="https://packright-20.vercel.app/packing-list/japan">
 
     <!-- Google Analytics 4 -->
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNWZ3GJHRZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -59,14 +58,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- Fuse.js — Fuzzy search library for affiliate product matching -->
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
-    <!-- Pre-clear non-Europe trips to ensure Europe landing page context -->
+    <!-- Pre-clear non-Japan trips to ensure Japan landing page context -->
     <script>
         (function() {
             const activeTrip = localStorage.getItem('packright_active_trip');
             if (activeTrip) {
                 try {
                     const trip = JSON.parse(activeTrip);
-                    if (!trip.trip_name || !trip.trip_name.toLowerCase().includes('europe')) {
+                    if (!trip.trip_name || !trip.trip_name.toLowerCase().includes('japan')) {
                         localStorage.removeItem('packright_active_trip');
                     }
                 } catch(e) {
@@ -84,9 +83,9 @@
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": "Europe Packing List Generator — PackRight",
-      "description": "Free AI-powered packing list generator for trips to Europe. Describe your itinerary and get a personalized, categorized checklist instantly.",
-      "url": "https://packright-20.vercel.app/packing-list/europe",
+      "name": "Japan Packing List Generator — PackRight",
+      "description": "Free AI-powered packing list generator for trips to Japan. Describe your itinerary and get a personalized, categorized checklist instantly.",
+      "url": "https://packright-20.vercel.app/packing-list/japan",
       "brand": { "@type": "Brand", "name": "PackRight" },
       "offers": {
         "@type": "Offer",
@@ -95,7 +94,7 @@
         "availability": "https://schema.org/InStock"
       },
       "category": "Travel Planning Tool",
-      "keywords": "Europe packing list, what to pack for Europe, Europe travel checklist, packing for Europe"
+      "keywords": "Japan packing list, what to pack for Japan, Japan travel checklist, packing for Japan"
     }
     </script>
 
@@ -107,42 +106,34 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is a carry-on enough for a 2-week trip to Europe?",
+          "name": "Do I need a plug adapter for Japan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, with packing cubes and laundry, you can easily travel with a carry-on. This saves you checked bag fees on European budget airlines like Ryanair or EasyJet."
+            "text": "Yes. Japan uses Type A and B plugs (flat two-prong outlets), which are identical to North American outlets but usually lack a third ground prong hole. Ensure your adapter is ungrounded."
           }
         },
         {
           "@type": "Question",
-          "name": "What are the best shoes for walking in Europe?",
+          "name": "Why do I need a towel or tenugui in Japan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Comfortable sneakers with thick soles and good arch support are essential. European cities feature uneven cobblestone streets that will destroy thin-soled shoes or heels."
+            "text": "Many public restrooms in Japan do not provide paper towels or hand dryers. Carrying a small hand towel or traditional tenugui is essential for drying your hands throughout the day."
           }
         },
         {
           "@type": "Question",
-          "name": "Do I need a special plug adapter for Europe?",
+          "name": "Is cash still required in Japan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, continental Europe uses Type C, E, or F plugs, while the UK uses Type G. A universal travel adapter is recommended."
+            "text": "Yes. Although credit cards and IC cards (like Suica or Pasmo) are widely used in cities, cash is still highly recommended for buying street food, paying entrance fees at temples, and traveling in rural areas."
           }
         },
         {
           "@type": "Question",
-          "name": "What dress code should I follow for European churches?",
+          "name": "Should I bring slip-on shoes to Japan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Many historical churches and cathedrals (like St. Peter's in Rome) require visitors to cover their shoulders and knees. Carry a lightweight scarf or cardigan just in case."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is pickpocketing common in Europe?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, pickpocketing is common in major tourist areas and on public transit. Use a crossbody bag with zippers, keep your valuables in front pockets, and avoid carrying excess cash."
+            "text": "Absolutely. You will need to take off your shoes frequently at temples, shrines, traditional restaurants, ryokans (guesthouses), and homes. Slip-on shoes save time and effort."
           }
         }
       ]
@@ -203,17 +194,17 @@
             <span class="text-neutralText/30">&gt;</span>
             <a href="/" class="hover:text-primary transition-colors">Packing Lists</a>
             <span class="text-neutralText/30">&gt;</span>
-            <span class="text-neutralText/80 font-medium">Europe</span>
+            <span class="text-neutralText/80 font-medium">Japan</span>
         </nav>
-        <h1 class="font-outfit italic text-primary text-3xl md:text-5xl font-bold leading-tight mb-4">Your Packing Checklist for Europe 👇</h1>
+        <h1 class="font-outfit italic text-primary text-3xl md:text-5xl font-bold leading-tight mb-4">Your Packing Checklist for Japan 👇</h1>
         <p class="font-poppins text-neutralText/70 text-[15px] md:text-[16px] leading-[1.6] max-w-3xl">
-            Europe spans over 40 countries, dozens of climates, and thousands of years of culture — which makes packing for it genuinely tricky. A summer trip to the Amalfi Coast calls for completely different gear than a winter break in Prague or a backpacking run through Scandinavia. Add to that the mix of budget airlines with strict carry-on rules and cobblestone streets that destroy the wrong shoes — and generic lists are almost never right.
+            From the futuristic streets of Tokyo to the tranquil temple gardens of Kyoto, Japan blends ultra-modern infrastructure with deep traditional etiquette. Packing for Japan requires a mindful approach—from carrying slip-on shoes for temple visits, clean socks for tatami mats, to bringing cash for temples and small shops. Navigating regional climates or subways with suitcases also makes lightweight carry-on packing a huge advantage.
             <br><br>
             Use our AI travel planning widget below to generate a checklist customized for your exact destination, activities, and travel style. Modify the pre-filled prompt block to fit your specific itinerary and hit <strong>Next</strong>.
         </p>
     </div>
 
-    <!-- Interactive App Widget Container (matches homepage dimensions & wrapper) -->
+    <!-- Interactive App Widget Container -->
     <div class="w-full max-w-5xl mx-auto flex-1 md:flex-none md:h-[85vh] relative shadow-2xl bg-white md:rounded-3xl overflow-hidden flex flex-col shrink-0 mb-16">
         
         <!-- Settings Gear Modal -->
@@ -237,7 +228,7 @@
 
         <!-- Share Fallback Modal -->
         <div id="shareModal" class="absolute inset-0 bg-neutralText/50 z-50 hidden items-center justify-center backdrop-blur-sm p-4">
-            <div class="bg-baseCanvas rounded-2xl p-6 w-full max-w-sm shadow-xl relative">
+            <div class="bg-baseCanvas rounded-2xl p-6 w-full max-sm shadow-xl relative">
                 <h2 class="font-outfit text-xl font-semibold mb-4 text-center">Share your Packing List</h2>
                 <div class="flex flex-col gap-3">
                     <a id="shareWhatsappBtn" target="_blank" class="flex items-center justify-center gap-2 px-4 py-3 bg-[#25D366] text-white rounded-xl font-medium transition hover:opacity-90">
@@ -259,20 +250,19 @@
             </div>
         </div>
 
-        <!-- SCREEN 1: Launchpad (with prefilled Europe description) -->
+        <!-- SCREEN 1: Launchpad -->
         <div id="screen-launchpad" class="flex-1 flex flex-col p-6 block overflow-y-auto">
             <div class="w-full max-w-3xl mx-auto flex-1 flex flex-col justify-center my-auto py-4">
                 
                 <div class="flex-1 flex flex-col justify-center">
                     <h2 class="font-outfit text-xl md:text-2xl font-semibold mb-3 md:mb-4 leading-snug">Where are you heading, and what's the vibe?</h2>
                     <div class="relative flex-1 min-h-[180px] md:min-h-[220px] flex flex-col">
-                        <textarea id="mainPromptInput" class="w-full flex-1 rounded-2xl border border-neutralText/10 p-4 md:p-5 pb-16 bg-baseCanvas/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary shadow-inner resize-none text-base md:text-lg leading-relaxed font-poppins" placeholder="e.g., 14 days in Europe with friends, visiting Paris and Rome, mix of sightseeing, day trips, and dining out..."></textarea>
+                        <textarea id="mainPromptInput" class="w-full flex-1 rounded-2xl border border-neutralText/10 p-4 md:p-5 pb-16 bg-baseCanvas/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary shadow-inner resize-none text-base md:text-lg leading-relaxed font-poppins" placeholder="e.g., 7 days in Tokyo and Kyoto in spring, temples, street food, lots of walking...">7 days in Tokyo and Kyoto in spring, temples, street food, lots of walking</textarea>
                         
                         <!-- Voice Input Button Area -->
                         <div class="absolute bottom-4 right-4 flex items-center gap-3">
                             <button aria-label="Voice Input" class="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-white shadow-lg hover:opacity-90 active:scale-95 transition-all group relative" id="voiceInputBtn">
                                 <span class="material-symbols-outlined text-[24px]">mic</span>
-                                <!-- Pulsing ring for active state (hidden by default) -->
                                 <span class="absolute inset-0 rounded-full bg-primary animate-ping opacity-0"></span>
                             </button>
                             <span class="material-symbols-outlined text-primary/40 text-[32px] pointer-events-none" style="font-variation-settings: 'FILL' 1;">edit_document</span>
@@ -320,10 +310,8 @@
         <div id="screen-brainstorm" class="flex-1 flex flex-col p-6 hidden justify-center items-center">
             <div class="w-full max-w-2xl mx-auto flex-1 flex flex-col justify-center items-center py-4">
                 <div class="relative w-32 h-32 mb-8">
-                    <!-- Pulsing animation rings -->
                     <div class="absolute inset-0 bg-primary/20 rounded-full animate-ping"></div>
                     <div class="absolute inset-2 bg-primary/30 rounded-full animate-pulse"></div>
-                    <!-- Suitcase Icon -->
                     <div class="absolute inset-0 flex items-center justify-center text-primary">
                         <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 10.5h-16.5c-.828 0-1.5.672-1.5 1.5v7.5c0 .828.672 1.5 1.5 1.5h16.5c.828 0 1.5-.672 1.5-1.5v-7.5c0-.828-.672-1.5-1.5-1.5z"></path>
@@ -397,15 +385,27 @@
 
     </div>
 
-    <!-- Static Preview Section / Sample Packing List for Europe (Beautifully styled to match dynamic canvas card styling) -->
-    <div class="w-full max-w-5xl mx-auto px-4 md:px-0 mb-16">
+    <!-- Expert Tip Callout -->
+    <div class="w-full max-w-5xl mx-auto px-4 md:px-0 mb-8">
+        <div class="bg-primary/5 border border-primary/20 rounded-2xl p-5 flex items-start gap-4 shadow-sm">
+            <span class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+            <div>
+                <h4 class="font-outfit font-bold text-neutralText text-base md:text-lg mb-1">Expert Travel Tip: Pack a traditional Tenugui or hand towel</h4>
+                <p class="font-poppins text-neutralText/70 text-sm leading-relaxed">
+                    Many public restrooms in Japan do not provide paper towels or hand dryers, and active travelers will find them essential for wiping hands. Additionally, if you plan to visit a traditional *onsen* (hot spring) or *sento* (public bath), carrying a small quick-dry towel or *tenugui* is required for washing and drying off.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Static Preview Section / Sample Packing List for Japan -->
+    <div class="w-full max-w-5xl mx-auto px-4 md:px-0 mb-8">
         <div class="bg-white rounded-3xl shadow-xl border border-neutralText/5 overflow-hidden flex flex-col mb-8">
-            <!-- White Canvas Header displaying generic Europe trip description -->
             <div class="p-6 md:p-8 bg-white border-b border-neutralText/5">
                 <div class="flex flex-col gap-2">
-                    <h2 class="font-outfit italic text-primary text-2xl md:text-3xl">Sample List: 14 Days in Europe (General)</h2>
+                    <h2 class="font-outfit italic text-primary text-2xl md:text-3xl">Sample List: 7 Days in Japan (General)</h2>
                     <p class="font-poppins text-neutralText/80 text-sm md:text-base leading-relaxed bg-baseCanvas/40 p-4 rounded-2xl border border-neutralText/5 mt-2">
-                        <strong>Trip Details:</strong> 14 days trip to Europe with friends, visiting multiple cities, mix of sightseeing, local food, nightlife, and some day trips.
+                        <strong>Trip Details:</strong> 7 days trip to Tokyo and Kyoto in spring, visiting temples, trying local street food, lots of walking, and cultural sightseeing.
                     </p>
                 </div>
             </div>
@@ -427,8 +427,8 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Comfortable walking shoes ×2</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">essential — European cities involve significant daily walking on cobblestones</div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Slip-on walking shoes</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">essential — you will take shoes off frequently at shrines, traditional restaurants, and ryokans</div>
                                 </div>
                             </div>
                             <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
@@ -436,8 +436,8 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Versatile jacket</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">layering is key — temperatures vary widely across regions and seasons</div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Socks without holes (clean/neat)</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">cultural norm — you'll walk on tatami mats in socks, make sure they are presentable</div>
                                 </div>
                             </div>
                             <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
@@ -445,8 +445,8 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Smart casual outfit ×1</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">needed for nicer restaurants, lounges, and evening theater/nightlife</div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Versatile layering jacket</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">highly recommended — Japanese spring and autumn mornings/nights are chilly</div>
                                 </div>
                             </div>
                             <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
@@ -454,8 +454,8 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Lightweight scarf</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">useful for entering cathedrals that require covered shoulders or knees</div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Modest temple-appropriate clothing</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">respectful — shoulders and knees covered when visiting sacred areas</div>
                                 </div>
                             </div>
                             <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
@@ -484,8 +484,26 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Japanese Yen (Cash)</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">essential — Japan remains cash-heavy for temple entrance fees, bus fares, and street food stalls</div>
+                                </div>
+                            </div>
+                            <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
+                                <button class="sample-checkbox-btn mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border-2 border-neutralText/30 flex items-center justify-center text-white transition-colors focus:outline-none">
+                                    <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                </button>
+                                <div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">IC Transit Card (Suica, Pasmo, or ICOCA)</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">highly recommended — tap-to-ride subways and trains, and useful for vending machines / conbinis</div>
+                                </div>
+                            </div>
+                            <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
+                                <button class="sample-checkbox-btn mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border-2 border-neutralText/30 flex items-center justify-center text-white transition-colors focus:outline-none">
+                                    <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                </button>
+                                <div>
                                     <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Passport (with 6+ months validity)</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">verify travel validity requirements for the Schengen Zone countries</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">mandatory — by Japanese law, tourists must carry their original passport at all times</div>
                                 </div>
                             </div>
                             <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
@@ -493,25 +511,7 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Euros / Local cash notes</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">useful for small street vendors, gelaterias, and tipping</div>
-                                </div>
-                            </div>
-                            <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
-                                <button class="sample-checkbox-btn mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border-2 border-neutralText/30 flex items-center justify-center text-white transition-colors focus:outline-none">
-                                    <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                                </button>
-                                <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Crossbody bag or anti-theft pouch</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">highly recommended in crowded stations, metros, and major sights</div>
-                                </div>
-                            </div>
-                            <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
-                                <button class="sample-checkbox-btn mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border-2 border-neutralText/30 flex items-center justify-center text-white transition-colors focus:outline-none">
-                                    <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                                </button>
-                                <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all font-normal">Flight/Hotel QR codes, Low international fee cards, Travel Insurance docs</div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all font-normal">JR Pass physical voucher (if bought), Credit cards with zero foreign fees, Flight itineraries</div>
                                 </div>
                             </div>
                         </div>
@@ -532,8 +532,17 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Travel size liquids (shampoo, soap)</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">must fit in a single 1L transparent bag for airport security checks</div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Traditional Tenugui or hand towel</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">essential — many Japanese public restrooms do not have hand-dryers or paper towels</div>
+                                </div>
+                            </div>
+                            <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
+                                <button class="sample-checkbox-btn mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border-2 border-neutralText/30 flex items-center justify-center text-white transition-colors focus:outline-none">
+                                    <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                </button>
+                                <div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Small plastic bag (for trash)</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">highly recommended — public trash bins are rare, you must carry your garbage with you</div>
                                 </div>
                             </div>
                             <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
@@ -562,8 +571,8 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Universal plug adapter</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">essential — plug types differ between UK (Type G) and mainland Europe (Type C/E/F)</div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Type A plug adapter</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">essential — Japan uses flat 2-prong Type A plugs. Confirm dual-voltage (100V) support for high-draw items</div>
                                 </div>
                             </div>
                             <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
@@ -571,8 +580,8 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Portable battery bank</div>
-                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">for long days of navigation, camera use, and translation apps</div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all">Pocket WiFi or eSIM</div>
+                                    <div class="text-[11px] text-neutralText/60 italic mt-0.5">highly recommended — staying connected to Google Maps is vital to navigate transit networks</div>
                                 </div>
                             </div>
                             <div class="sample-item-row p-4 flex items-start gap-3 hover:bg-baseCanvas/20 transition-colors cursor-pointer select-none">
@@ -580,7 +589,7 @@
                                     <svg class="w-3 h-3 opacity-0 transition-opacity sample-check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                                 </button>
                                 <div>
-                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all font-normal">Offline Google Maps, Phone charger, Packing cubes, Reusable water bottle</div>
+                                    <div class="font-medium text-sm text-neutralText sample-item-name transition-all font-normal">Portable battery bank, Reusable eco shopping bag, Noise-cancelling headphones, Packing cubes</div>
                                 </div>
                             </div>
                         </div>
@@ -590,82 +599,80 @@
         </div>
     </div>
 
-    <!-- Europe Packing FAQ Accordion Section (Matches Homepage FAQ visual style & scripting classes) -->
-    <div class="w-full max-w-5xl mx-auto py-16 px-4 md:px-0">
-        <h2 class="font-outfit italic text-primary text-2xl md:text-3xl mb-6">Frequently Asked Questions — Packing for Europe</h2>
+    <!-- Contextual Activity Links -->
+    <div class="w-full max-w-5xl mx-auto px-6 md:px-0 text-center py-6 mb-8 bg-white rounded-2xl border border-neutralText/5 shadow-sm">
+        <p class="font-poppins text-neutralText/70 text-[14px] md:text-base">
+            Doing something specific in Japan? View our specialized lists for 
+            <a href="/?prompt=10%20days%20skiing%20in%20Niseko%2C%20winter%20sports%20gear%2C%20heavy%20layers%2C%20resort%20stay" class="text-primary hover:underline font-semibold">Skiing in Niseko</a>, 
+            <a href="/?prompt=Hiking%20Mt.%20Fuji%20trail%20climb%2C%20outdoor%20climbing%20gear%2C%20sturdy%20boots%2C%20overnight%20mountain%20hut%20stay" class="text-primary hover:underline font-semibold">Hiking Mt. Fuji</a>, or 
+            <a href="/?prompt=Koyasan%20Temple%20Stay%20in%20Wakayama%2C%20modest%20clothing%2C%20overnight%20in%20Buddhist%20monastery%2C%20mountain%20climate" class="text-primary hover:underline font-semibold">Koyasan Temple Stay</a>.
+        </p>
+    </div>
+
+    <!-- Japan Packing FAQ Accordion Section -->
+    <div class="w-full max-w-5xl mx-auto py-12 px-4 md:px-0">
+        <h2 class="font-outfit italic text-primary text-2xl md:text-3xl mb-6">Frequently Asked Questions — Packing for Japan</h2>
         
         <div class="bg-white rounded-2xl shadow-sm border-t-[3px] border-primary w-full transition-shadow hover:shadow-md">
             <!-- FAQ Item 1 -->
             <div class="faq-item border-b border-neutralText/5 last:border-b-0">
                 <button class="faq-btn w-full px-6 md:px-8 py-5 md:py-6 flex justify-between items-center bg-transparent focus:outline-none hover:bg-neutralText/5 transition-colors rounded-t-2xl">
-                    <span class="font-poppins font-semibold text-neutralText text-base md:text-lg text-left pr-4">Is a carry-on enough for a 2-week trip to Europe?</span>
+                    <span class="font-poppins font-semibold text-neutralText text-base md:text-lg text-left pr-4">Do I need a plug adapter for Japan?</span>
                     <svg class="w-5 h-5 text-primary transform transition-transform duration-300 faq-chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
                     <div class="px-6 md:px-8 pb-5 md:pb-6 font-poppins text-neutralText/60 text-[15px] md:text-base leading-relaxed">
-                        Yes! By using packing cubes, choosing lightweight layers, and scheduling a quick laundry session midway, you can comfortably travel with a carry-on. This also saves you from paying steep baggage fees on European budget carriers like Ryanair and EasyJet.
+                        Yes. Japan uses Type A and B plugs (flat two-prong outlets), which are identical to North American outlets but usually lack a third ground prong hole. Ensure your adapter is ungrounded.
                     </div>
                 </div>
             </div>
             <!-- FAQ Item 2 -->
             <div class="faq-item border-b border-neutralText/5 last:border-b-0">
                 <button class="faq-btn w-full px-6 md:px-8 py-5 md:py-6 flex justify-between items-center bg-transparent focus:outline-none hover:bg-neutralText/5 transition-colors">
-                    <span class="font-poppins font-semibold text-neutralText text-base md:text-lg text-left pr-4">What are the best shoes for walking in Europe?</span>
+                    <span class="font-poppins font-semibold text-neutralText text-base md:text-lg text-left pr-4">Why do I need a towel or tenugui in Japan?</span>
                     <svg class="w-5 h-5 text-primary transform transition-transform duration-300 faq-chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
                     <div class="px-6 md:px-8 pb-5 md:pb-6 font-poppins text-neutralText/60 text-[15px] md:text-base leading-relaxed">
-                        Comfortable sneakers with good arch support and thicker rubber soles are absolute non-negotiables. Many old European towns have uneven, centuries-old cobblestone lanes that will quickly cause blisters or strain in thin-soled shoes, sandals, or heels.
+                        Many public restrooms in Japan do not provide paper towels or hand dryers. Carrying a small hand towel or traditional tenugui is essential for drying your hands throughout the day.
                     </div>
                 </div>
             </div>
             <!-- FAQ Item 3 -->
             <div class="faq-item border-b border-neutralText/5 last:border-b-0">
                 <button class="faq-btn w-full px-6 md:px-8 py-5 md:py-6 flex justify-between items-center bg-transparent focus:outline-none hover:bg-neutralText/5 transition-colors">
-                    <span class="font-poppins font-semibold text-neutralText text-base md:text-lg text-left pr-4">Do I need a special plug adapter for Europe?</span>
+                    <span class="font-poppins font-semibold text-neutralText text-base md:text-lg text-left pr-4">Is cash still required in Japan?</span>
                     <svg class="w-5 h-5 text-primary transform transition-transform duration-300 faq-chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
                     <div class="px-6 md:px-8 pb-5 md:pb-6 font-poppins text-neutralText/60 text-[15px] md:text-base leading-relaxed">
-                        Yes. Mainland Europe uses Type C, E, and F outlets (two round pins), while the UK and Ireland use Type G (three chunky rectangular pins). Buying a universal plug adapter ensures you are covered in all countries.
+                        Yes. Although credit cards and IC cards (like Suica or Pasmo) are widely used in cities, cash is still highly recommended for buying street food, paying entrance fees at temples, and traveling in rural areas.
                     </div>
                 </div>
             </div>
             <!-- FAQ Item 4 -->
-            <div class="faq-item border-b border-neutralText/5 last:border-b-0">
-                <button class="faq-btn w-full px-6 md:px-8 py-5 md:py-6 flex justify-between items-center bg-transparent focus:outline-none hover:bg-neutralText/5 transition-colors">
-                    <span class="font-poppins font-semibold text-neutralText text-base md:text-lg text-left pr-4">What dress code should I follow for European churches?</span>
-                    <svg class="w-5 h-5 text-primary transform transition-transform duration-300 faq-chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
-                    <div class="px-6 md:px-8 pb-5 md:pb-6 font-poppins text-neutralText/60 text-[15px] md:text-base leading-relaxed">
-                        Many active religious sites (such as St. Peter's Basilica in the Vatican, or Saint Mark's in Venice) strictly enforce dress codes requiring shoulders and knees to be fully covered. Carrying a lightweight scarf in your day pack is an easy way to wrap up when visiting historic churches.
-                    </div>
-                </div>
-            </div>
-            <!-- FAQ Item 5 -->
             <div class="faq-item border-b border-neutralText/5 last:border-b-0 rounded-b-2xl">
                 <button class="faq-btn w-full px-6 md:px-8 py-5 md:py-6 flex justify-between items-center bg-transparent focus:outline-none hover:bg-neutralText/5 transition-colors rounded-b-2xl">
-                    <span class="font-poppins font-semibold text-neutralText text-base md:text-lg text-left pr-4">Is pickpocketing common in Europe?</span>
+                    <span class="font-poppins font-semibold text-neutralText text-base md:text-lg text-left pr-4">Should I bring slip-on shoes to Japan?</span>
                     <svg class="w-5 h-5 text-primary transform transition-transform duration-300 faq-chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
                     <div class="px-6 md:px-8 pb-5 md:pb-6 font-poppins text-neutralText/60 text-[15px] md:text-base leading-relaxed">
-                        Yes, pickpocketing is common in major metropolitan transit terminals, metro lines, and highly crowded spots (like the Eiffel Tower or Trevi Fountain). Using a secure crossbody bag that zips shut, keeping your phone in front pockets, and storing your passport/backup cards in your hotel room safe keeps you safe.
+                        Absolutely. You will need to take off your shoes frequently at temples, shrines, traditional restaurants, ryokans (guesthouses), and homes. Slip-on shoes save time and effort.
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CTA Section -->
+    <!-- Return CTA Section -->
     <div class="w-full text-center py-16 mt-4 border-t border-neutralText/10 max-w-5xl mx-auto">
-        <h2 class="font-outfit italic text-primary text-[24px] md:text-[28px] mb-2">Not going to Europe?</h2>
-        <p class="font-poppins font-normal text-[15px] md:text-[16px] text-neutralText/60 mb-6">PackRight builds custom checklists for any destination. Just describe your plans.</p>
-        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-8 py-4 bg-primary text-white rounded-full font-outfit font-semibold text-[16px] hover:bg-primary/95 active:scale-[0.98] shadow-lg transition-all">Plan Another Trip</button>
+        <h2 class="font-outfit italic text-primary text-[24px] md:text-[28px] mb-2">Not going to Japan?</h2>
+        <p class="font-poppins font-normal text-[15px] md:text-[16px] text-neutralText/60 mb-6">PackRight works for any destination. Just describe your plans.</p>
+        <a href="/?focus=true" class="inline-block px-8 py-4 bg-primary text-white rounded-full font-outfit font-semibold text-[16px] hover:bg-primary/95 active:scale-[0.98] shadow-lg transition-all font-outfit font-semibold">Create Your Custom List →</a>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer Sitemap Section -->
     <footer class="w-full max-w-5xl mx-auto mt-16 pt-8 pb-8 border-t border-neutralText/10">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-left px-6 md:px-0">
             <div>
