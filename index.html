@@ -159,6 +159,108 @@
         }
     </style>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://packright-20.vercel.app/#organization",
+      "name": "PackRight AI",
+      "url": "https://packright-20.vercel.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://packright-20.vercel.app/logo.png"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://packright-20.vercel.app/#website",
+      "url": "https://packright-20.vercel.app/",
+      "name": "PackRight",
+      "description": "AI-powered travel packing list generator for any destination.",
+      "publisher": {
+        "@id": "https://packright-20.vercel.app/#organization"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://packright-20.vercel.app/#webapp",
+      "name": "PackRight AI Travel Assistant",
+      "url": "https://packright-20.vercel.app/",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "All",
+      "description": "Generate personalized, smart packing lists tailored to your destination, activities, and weather using AI.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://packright-20.vercel.app/packing-list/europe/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need a plug adapter for Europe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you will typically need a Type C or Type E/F plug adapter for most of Europe, or a Type G for the UK."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is cash still required in European cities?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While cards are widely accepted, it's always good to carry some euros or local currency for small vendors, tips, and public transport."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best footwear for cobblestones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Comfortable, thick-soled walking shoes or sturdy sneakers are highly recommended to navigate uneven cobblestone streets safely."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://packright-20.vercel.app/packing-list/japan/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need a plug adapter for Japan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Japan uses Type A (two flat pins, same as North America) but usually ungrounded. Make sure your plugs don't have a third grounding pin or bring an adapter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is cash still required in Japanese cities?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, cash (Yen) is still very heavily used in Japan, especially at smaller restaurants, shrines, and markets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best footwear for temple visits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Slip-on shoes are ideal since you must remove your shoes frequently when entering temples, traditional restaurants, and ryokans."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 <body class="font-body-md text-body-md antialiased min-h-screen flex flex-col" style="background-color: rgb(248, 243, 238); background-image: url(&quot;https://www.transparenttextures.com/patterns/natural-paper.png&quot;); background-attachment: fixed;">
 <nav class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex justify-between items-center z-40">
