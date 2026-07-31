@@ -370,8 +370,9 @@
         </div>
 
         
+        
         <!-- SCREEN 4: Feedback -->
-        <div id="screen-feedback" class="w-full max-w-4xl bg-surface-card rounded-2xl p-8 md:p-12 soft-shadow mb-20 hidden flex-col items-center">
+        <div id="screen-feedback" class="w-full max-w-4xl bg-surface-card rounded-2xl p-8 md:p-12 soft-shadow mb-20 hidden flex-col items-center transition-all duration-300">
             
             <div id="feedbackFormContainer" class="w-full flex flex-col items-center">
                 <h1 id="feedbackHeading" class="font-headline-lg text-[32px] md:text-[40px] text-center mb-2 text-on-surface">You're all packed!</h1>
@@ -382,22 +383,29 @@
                 <h2 class="font-title-lg text-2xl mb-2 text-on-surface text-center">How can we make your experience better?</h2>
                 <p class="font-body-md text-on-surface-variant text-center mb-8 max-w-lg">Was anything missing from your list, or did something not feel right? Your feedback helps every traveler who uses PackRight after you.</p>
                 
-                <div class="flex gap-2 mb-8" id="starRatingContainer">
-                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-brand-terracotta transition-colors star-btn" data-val="1" style="font-variation-settings: 'FILL' 0;">star</span>
-                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-brand-terracotta transition-colors star-btn" data-val="2" style="font-variation-settings: 'FILL' 0;">star</span>
-                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-brand-terracotta transition-colors star-btn" data-val="3" style="font-variation-settings: 'FILL' 0;">star</span>
-                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-brand-terracotta transition-colors star-btn" data-val="4" style="font-variation-settings: 'FILL' 0;">star</span>
-                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-brand-terracotta transition-colors star-btn" data-val="5" style="font-variation-settings: 'FILL' 0;">star</span>
+                <div class="flex gap-2 mb-2" id="starRatingContainer">
+                    <!-- Stars -->
+                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-[#D85A30] transition-colors star-btn" data-val="1" style="font-variation-settings: 'FILL' 0;">star</span>
+                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-[#D85A30] transition-colors star-btn" data-val="2" style="font-variation-settings: 'FILL' 0;">star</span>
+                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-[#D85A30] transition-colors star-btn" data-val="3" style="font-variation-settings: 'FILL' 0;">star</span>
+                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-[#D85A30] transition-colors star-btn" data-val="4" style="font-variation-settings: 'FILL' 0;">star</span>
+                    <span class="material-symbols-outlined text-[40px] cursor-pointer text-outline-variant hover:text-[#D85A30] transition-colors star-btn" data-val="5" style="font-variation-settings: 'FILL' 0;">star</span>
                 </div>
 
-                <div class="w-full max-w-md flex flex-col gap-4 mb-8">
-                    <textarea id="feedbackMessage" class="w-full rounded-xl border border-outline-variant/30 px-4 py-3 bg-surface-container-low focus:outline-none focus:border-brand-terracotta focus:ring-1 focus:ring-brand-terracotta font-body-md text-on-surface placeholder:text-secondary/50 shadow-sm resize-none" rows="3" placeholder="What was missing, or what can we do better? (optional)"></textarea>
-                    <input type="text" id="feedbackName" class="w-full rounded-xl border border-outline-variant/30 px-4 py-3 bg-surface-container-low focus:outline-none focus:border-brand-terracotta focus:ring-1 focus:ring-brand-terracotta font-body-md text-on-surface placeholder:text-secondary/50 shadow-sm" placeholder="Your name (optional)">
-                    <input type="email" id="feedbackEmail" class="w-full rounded-xl border border-outline-variant/30 px-4 py-3 bg-surface-container-low focus:outline-none focus:border-brand-terracotta focus:ring-1 focus:ring-brand-terracotta font-body-md text-on-surface placeholder:text-secondary/50 shadow-sm" placeholder="Your email (optional)">
+                <!-- Chips Container -->
+                <div id="feedbackChipsWrapper" class="w-full max-w-md flex flex-col items-center hidden opacity-0 transition-opacity duration-300 mb-8 mt-4">
+                    <p id="feedbackChipsLabel" class="font-body-md font-medium text-on-surface mb-3"></p>
+                    <div id="feedbackChipsContainer" class="flex flex-wrap justify-center gap-2"></div>
                 </div>
 
-                <button id="sendFeedbackBtn" class="w-full max-w-md bg-brand-terracotta text-white font-title-lg text-lg py-4 rounded-xl shadow hover:bg-brand-terracotta-dark transition-colors duration-300 active:scale-[0.98] mb-4">Send feedback</button>
-                <button id="skipFeedbackBtn" class="text-on-surface-variant hover:text-brand-terracotta transition-colors font-body-md">Skip — start a new list.</button>
+                <div class="w-full max-w-md flex flex-col gap-4 mb-8 mt-4">
+                    <textarea id="feedbackMessage" class="w-full rounded-xl border border-outline-variant/30 px-4 py-3 bg-surface-container-low focus:outline-none focus:border-[#D85A30] focus:ring-1 focus:ring-[#D85A30] font-body-md text-on-surface placeholder:text-secondary/50 shadow-sm resize-none" rows="3" placeholder="Anything else you want to add? (optional)"></textarea>
+                    <input type="text" id="feedbackName" class="w-full rounded-xl border border-outline-variant/30 px-4 py-3 bg-surface-container-low focus:outline-none focus:border-[#D85A30] focus:ring-1 focus:ring-[#D85A30] font-body-md text-on-surface placeholder:text-secondary/50 shadow-sm" placeholder="Your name (optional)">
+                    <input type="email" id="feedbackEmail" class="w-full rounded-xl border border-outline-variant/30 px-4 py-3 bg-surface-container-low focus:outline-none focus:border-[#D85A30] focus:ring-1 focus:ring-[#D85A30] font-body-md text-on-surface placeholder:text-secondary/50 shadow-sm" placeholder="Your email (optional)">
+                </div>
+
+                <button id="sendFeedbackBtn" class="w-full max-w-md bg-[#D85A30] text-white font-title-lg text-lg py-4 rounded-xl shadow hover:bg-[#C25D45] transition-colors duration-300 active:scale-[0.98] mb-4">Send feedback</button>
+                <button id="skipFeedbackBtn" class="text-on-surface-variant hover:text-[#D85A30] transition-colors font-body-md">Skip — start a new list.</button>
             </div>
 
             <div id="feedbackThanksContainer" class="w-full flex flex-col items-center hidden mt-10 mb-10">
@@ -406,7 +414,7 @@
                 </div>
                 <h1 class="font-headline-lg text-3xl font-bold text-on-surface mb-2">Thanks, I'll personally go through it.</h1>
                 <p class="font-body-md text-on-surface-variant mb-10">Want to pack for another trip?</p>
-                <button id="feedbackNewTripBtn" class="px-8 py-4 bg-white text-brand-terracotta border-2 border-brand-terracotta font-title-lg font-semibold text-lg rounded-xl shadow hover:bg-brand-terracotta/5 transition-all">Start a new list</button>
+                <button id="feedbackNewTripBtn" class="px-8 py-4 bg-white text-[#D85A30] border-2 border-[#D85A30] font-title-lg font-semibold text-lg rounded-xl shadow hover:bg-brand-terracotta/5 transition-all">Start a new list</button>
             </div>
 
         </div>

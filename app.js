@@ -781,11 +781,67 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
+    
     // --- Feedback Screen ---
     let currentRating = 0;
     let feedbackTotalItems = 0;
     let feedbackTripDest = "your trip";
     let feedbackTripDays = "?";
+    let selectedReasonTags = new Set();
+    
+    const chipOptions = {
+        bad: { // 1 or 2 stars
+            label: "What went wrong?",
+            chips: ["Items were too generic", "Missing items for my destination", "Irrelevant items on my list", "List was too long", "List was too short", "Something else"]
+        },
+        neutral: { // 3 stars
+            label: "What could be better?",
+            chips: ["Missing items for my destination", "Some items felt irrelevant", "List was too long", "List was too short", "Hard to navigate", "Something else"]
+        },
+        good: { // 4 or 5 stars
+            label: "What worked well?",
+            chips: ["Spot on for my destination", "Covered things I wouldn't have thought of", "Right length, nothing extra", "Easy to use", "Good product suggestions", "Something else"]
+        }
+    };
+
+    function renderChips(rating) {
+        const wrapper = document.getElementById('feedbackChipsWrapper');
+        const container = document.getElementById('feedbackChipsContainer');
+        const label = document.getElementById('feedbackChipsLabel');
+        
+        let config;
+        if (rating <= 2) config = chipOptions.bad;
+        else if (rating === 3) config = chipOptions.neutral;
+        else config = chipOptions.good;
+
+        label.textContent = config.label;
+        container.innerHTML = '';
+        selectedReasonTags.clear();
+
+        config.chips.forEach(chipText => {
+            const btn = document.createElement('button');
+            btn.className = "px-4 py-2 rounded-full border border-outline-variant bg-surface-container-low text-on-surface font-body-sm transition-colors duration-200 chip-btn";
+            btn.textContent = chipText;
+            btn.addEventListener('click', () => {
+                if (selectedReasonTags.has(chipText)) {
+                    selectedReasonTags.delete(chipText);
+                    btn.classList.remove('bg-[#D85A30]', 'text-white', 'border-[#D85A30]');
+                    btn.classList.add('bg-surface-container-low', 'text-on-surface', 'border-outline-variant');
+                } else {
+                    selectedReasonTags.add(chipText);
+                    btn.classList.add('bg-[#D85A30]', 'text-white', 'border-[#D85A30]');
+                    btn.classList.remove('bg-surface-container-low', 'text-on-surface', 'border-outline-variant');
+                }
+            });
+            container.appendChild(btn);
+        });
+
+        wrapper.classList.remove('hidden');
+        // slight delay to allow display block to apply before opacity transition
+        setTimeout(() => {
+            wrapper.classList.remove('opacity-0');
+        }, 10);
+    }
 
     const starBtns = document.querySelectorAll('.star-btn');
     starBtns.forEach(btn => {
@@ -795,16 +851,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 const val = parseInt(sb.dataset.val);
                 if (val <= currentRating) {
                     sb.style.fontVariationSettings = "'FILL' 1";
-                    sb.classList.add('text-brand-terracotta');
+                    sb.classList.add('text-[#D85A30]');
                     sb.classList.remove('text-outline-variant');
                 } else {
                     sb.style.fontVariationSettings = "'FILL' 0";
-                    sb.classList.remove('text-brand-terracotta');
+                    sb.classList.remove('text-[#D85A30]');
                     sb.classList.add('text-outline-variant');
                 }
             });
+            renderChips(currentRating);
         });
     });
+
+    function detectTripType(prompt) {
+        if (!prompt) return "general";
+        const p = prompt.toLowerCase();
+        if (p.includes("beach") || p.includes("resort") || p.includes("ocean") || p.includes("sea")) return "beach";
+        if (p.includes("business") || p.includes("work") || p.includes("conference") || p.includes("meeting")) return "business";
+        if (p.includes("adventure") || p.includes("hike") || p.includes("camping") || p.includes("trek") || p.includes("safari")) return "adventure";
+        if (p.includes("family") || p.includes("kids") || p.includes("baby") || p.includes("children")) return "family";
+        if (p.includes("city") || p.includes("urban")) return "city break";
+        if (p.includes("ski") || p.includes("snow") || p.includes("winter")) return "winter sports";
+        return "general";
+    }
 
     const sendFeedbackBtn = document.getElementById('sendFeedbackBtn');
     if (sendFeedbackBtn) {
@@ -817,28 +886,58 @@ document.addEventListener('DOMContentLoaded', () => {
             const msg = document.getElementById('feedbackMessage').value.trim();
             const fname = document.getElementById('feedbackName').value.trim();
             const femail = document.getElementById('feedbackEmail').value.trim();
+            const tags = Array.from(selectedReasonTags);
+            const generatedList = appState.activeTrip ? appState.activeTrip.categories : [];
+            const tType = detectTripType(appState.rawPrompt || (appState.activeTrip && appState.activeTrip.trip_name) || "");
 
             const payload = {
                 destination: feedbackTripDest,
                 trip_duration: feedbackTripDays,
+                trip_type: tType,
                 star_rating: currentRating,
+                reason_tags: tags,
                 message: msg,
                 name: fname,
                 email: femail,
                 items_checked: feedbackTotalItems,
-                total_items: feedbackTotalItems
+                total_items: feedbackTotalItems,
+                generated_list: generatedList
             };
+
+            // Always show thanks to user immediately to hide latency/errors
+            document.getElementById('feedbackFormContainer').classList.add('hidden');
+            document.getElementById('feedbackThanksContainer').classList.remove('hidden');
 
             if (supabase) {
                 try {
-                    await supabase.from('feedback').insert([payload]);
+                    // 1. Insert into feedback
+                    const { data, error } = await supabase.from('feedback').insert([payload]).select();
+                    
+                    if (!error && data && data.length > 0) {
+                        const feedbackId = data[0].id;
+
+                        const examplePayload = {
+                            destination: feedbackTripDest,
+                            trip_duration: feedbackTripDays,
+                            trip_type: tType,
+                            generated_list: generatedList,
+                            star_rating: currentRating,
+                            reason_tags: tags,
+                            user_message: msg,
+                            feedback_id: feedbackId
+                        };
+
+                        // 2. Insert into good_examples or bad_examples based on rating
+                        if (currentRating >= 4) {
+                            await supabase.from('good_examples').insert([examplePayload]);
+                        } else if (currentRating <= 2) {
+                            await supabase.from('bad_examples').insert([examplePayload]);
+                        }
+                    }
                 } catch(e) {
                     console.error("Feedback error", e);
                 }
             }
-
-            document.getElementById('feedbackFormContainer').classList.add('hidden');
-            document.getElementById('feedbackThanksContainer').classList.remove('hidden');
         });
     }
 
@@ -858,10 +957,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('feedbackMessage').value = '';
         document.getElementById('feedbackName').value = '';
         document.getElementById('feedbackEmail').value = '';
+        
+        const wrapper = document.getElementById('feedbackChipsWrapper');
+        wrapper.classList.add('hidden', 'opacity-0');
+        selectedReasonTags.clear();
+
         currentRating = 0;
         starBtns.forEach(sb => {
             sb.style.fontVariationSettings = "'FILL' 0";
-            sb.classList.remove('text-brand-terracotta');
+            sb.classList.remove('text-[#D85A30]');
             sb.classList.add('text-outline-variant');
         });
 
@@ -875,6 +979,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (feedbackNewTripBtn) feedbackNewTripBtn.addEventListener('click', resetToHome);
 
     // --- Homepage Sections Logic ---
+
 
 
     // 1. FAQ Accordion
