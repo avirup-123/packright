@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PackRight - Your Packing Checklist for Europe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "primary-container": "#b55a47",
+                        "surface-tint": "#994533",
+                        "surface-card": "#FFFFFF",
+                        "on-surface-variant": "#55423f",
+                        "inverse-on-surface": "#f5f0eb",
+                        "secondary-container": "#e2dfde",
+                        "background": "#fef8f3",
+                        "primary": "#964331",
+                        "surface-container-high": "#ece7e2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#636262",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#832610",
+                        "on-tertiary-container": "#fffbff",
+                        "text-rich": "#222222",
+                        "inverse-surface": "#32302d",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#ded9d4",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#a03b23",
+                        "on-surface": "#1d1b19",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f2ede8",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-container-highest": "#e6e2dd",
+                        "error": "#ba1a1a",
+                        "surface": "#fef8f3",
+                        "surface-bright": "#fef8f3",
+                        "primary-fixed": "#ffdad3",
+                        "on-primary-fixed-variant": "#7a2e1e",
+                        "inverse-primary": "#ffb4a4",
+                        "on-tertiary-fixed": "#3d0700",
+                        "on-primary-fixed": "#3e0500",
+                        "secondary": "#5f5e5e",
+                        "on-background": "#1d1b19",
+                        "on-primary-container": "#fffbff",
+                        "tertiary-container": "#c05238",
+                        "primary-fixed-dim": "#ffb4a4",
+                        "on-secondary-fixed-variant": "#474746",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "outline-variant": "#dbc1bb",
+                        "outline": "#88726e",
+                        "surface-bg": "#F5F0EB",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdad2",
+                        "tertiary-fixed-dim": "#ffb4a3",
+                        "surface-container-low": "#f8f3ee",
+                        "surface-variant": "#e6e2dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1200px",
+                        "margin-desktop": "40px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Outfit"],
+                        "label-md": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "title-lg": ["Outfit"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .pattern-bg {
+            background-image: radial-gradient(theme('colors.primary') 0.5px, transparent 0.5px), radial-gradient(theme('colors.primary') 0.5px, theme('colors.background') 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.03;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md" style="background-color: #fef8f3; background-image: url(&quot;https://www.transparenttextures.com/patterns/natural-paper.png&quot;); background-attachment: fixed;">
+<!-- TopNavBar -->
+<header class="bg-background/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="font-headline-md text-headline-md italic text-primary">PackRight</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex border border-outline-variant px-5 py-1.5 rounded-full font-label-md text-primary items-center gap-2 hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">google</span> Sign in
+                </button>
+<button class="p-2 text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-label-sm text-on-surface-variant mb-6">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Packing Lists</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Europe</span>
+</nav>
+<!-- Page Title & Intro -->
+<section class="mb-12">
+<h1 class="font-display-lg text-primary text-[40px] md:text-[56px] leading-tight italic mb-6">Your Packing Checklist for Europe 👇</h1>
+<div class="max-w-3xl space-y-4 text-on-surface-variant font-body-md"><p class="">From the romantic avenues of Paris to the ancient ruins of Rome, Europe offers a tapestry of cultures and landscapes. Packing for a journey across the continent requires a thoughtful approach—balancing style for city strolls with practicality for historic sites.</p></div>
+</section>
+<!-- Hero Canvas (Input Area) -->
+<section class="mb-16">
+<div class="bg-white rounded-[32px] p-8 md:p-12 shadow-xl shadow-primary/5 border border-outline-variant/30 relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-title-lg text-on-surface mb-6 text-center font-bold">Where are you heading, and what's the vibe?</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 mb-8 min-h-[160px] relative">
+<p class="text-on-surface-variant">14 days in Western Europe during autumn, visiting museums, historical landmarks, and enjoying local gastronomy. Some light hiking in the Alps.</p>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-full"><span class="material-symbols-outlined">mic</span></button>
+<button class="p-2 text-primary hover:bg-primary/10 rounded-full"><span class="material-symbols-outlined">description</span></button>
+</div>
+</div>
+<div class="flex justify-center">
+<button class="bg-primary text-on-primary px-12 py-4 rounded-full font-label-md text-body-md hover:bg-tertiary-container transition-all shadow-lg shadow-primary/20" style="background-color: rgb(227, 116, 90); --hover-bg: #c2634d;" onmouseover="this.style.backgroundColor='#c2634d'" onmouseout="this.style.backgroundColor='#E3745A'">
+                            Generate My Packing List
+                        </button>
+</div>
+</div>
+<div class="absolute inset-0 pattern-bg"></div>
+</div>
+</section>
+<!-- Expert Travel Tip Box -->
+<section class="mb-16">
+<div class="bg-surface-container-low rounded-2xl p-6 md:p-8 flex items-start gap-4 border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary text-[24px]">lightbulb</span>
+<div>
+<h3 class="font-label-md font-bold text-on-surface mb-1 uppercase tracking-wider">Expert Travel Tip: Currency in Europe</h3>
+<p class="text-on-surface-variant text-body-md">While cards are widely accepted, always carry a small amount of Euro coins for tipping, small purchases at local markets, and accessing public restrooms. A coin purse is an invaluable travel companion across the continent.</p>
+</div>
+</div>
+</section>
+<!-- Sample List Section -->
+<section class="mb-16">
+<h2 class="font-display-lg text-primary italic text-[32px] mb-6">Sample List: 14 Days in Europe (General)</h2>
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-6 mb-8">
+<p class="text-on-surface-variant font-body-md">
+<span class="font-bold text-primary">Trip Details:</span> 14 days trip through Western Europe, visiting museums, galleries, historic city centers, and regional highlights.
+                </p>
+</div>
+<!-- Grid Checklist -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+<div class="absolute inset-0 pattern-bg -z-10 rounded-3xl"></div>
+<!-- Clothing & Footwear -->
+<div class="bg-white/80 backdrop-blur-sm rounded-2xl border border-outline-variant p-6">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<h3 class="font-title-lg text-on-surface">Clothing</h3>
+<span class="bg-primary-fixed text-on-primary-fixed-variant text-[10px] px-2 py-0.5 rounded-full font-bold">11 Items</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">expand_less</span>
+</div>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full border border-outline mt-1 shrink-0"></div>
+<div>
+<p class="text-body-md text-on-surface">Comfortable Walking Shoes</p>
+<p class="text-[12px] text-on-surface-variant italic">essential — you'll be walking across many cobblestone historic districts</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full border border-outline mt-1 shrink-0"></div>
+<div>
+<p class="text-body-md text-on-surface">Smart Casual Evening Wear</p>
+<p class="text-[12px] text-on-surface-variant italic">recommended — for nicer dinners or theater visits</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full border border-outline mt-1 shrink-0"></div>
+<div>
+<p class="text-body-md text-on-surface">Weather-appropriate Layers</p>
+<p class="text-[12px] text-on-surface-variant italic">highly recommended — coastal breezes and alpine air vary</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Tech & Documents -->
+<div class="bg-white/80 backdrop-blur-sm rounded-2xl border border-outline-variant p-6">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<h3 class="font-title-lg text-on-surface">Documents &amp; Money</h3>
+<span class="bg-primary-fixed text-on-primary-fixed-variant text-[10px] px-2 py-0.5 rounded-full font-bold">6 Items</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">expand_less</span>
+</div>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full border border-outline mt-1 shrink-0"></div>
+<div>
+<p class="text-body-md text-on-surface">Universal Power Adapter (Type C/E/F/G)</p>
+<p class="text-[12px] text-on-surface-variant italic">essential — UK and EU use different plug styles</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full border border-outline mt-1 shrink-0"></div>
+<div>
+<p class="text-body-md text-on-surface">Passport &amp; Travel Insurance</p>
+<p class="text-[12px] text-on-surface-variant italic">mandatory — keep digital copies in cloud storage</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full border border-outline mt-1 shrink-0"></div>
+<div>
+<p class="text-body-md text-on-surface">E-SIM or Roaming Plan</p>
+<p class="text-[12px] text-on-surface-variant italic">highly recommended — staying connected for navigation is vital</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Activity Box -->
+<section class="mb-16">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 text-center">
+<p class="text-on-surface-variant">Doing something specific in Europe? View our specialized lists for <a class="text-primary font-bold hover:underline" href="#">Skiing in the Alps</a>, <a class="text-primary font-bold hover:underline" href="#">Hiking the Camino</a>, or <a class="text-primary font-bold hover:underline" href="#">Coastal Cruises</a>.</p>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="mb-16">
+<h2 class="font-display-lg text-primary italic text-[32px] mb-8">Frequently Asked Questions — Packing for Europe</h2>
+<div class="space-y-0 border-t border-primary/20">
+<button class="w-full flex justify-between items-center py-5 border-b border-primary/20 group">
+<span class="font-title-lg text-on-surface group-hover:text-primary transition-colors">Do I need a plug adapter for Europe?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<button class="w-full flex justify-between items-center py-5 border-b border-primary/20 group">
+<span class="font-title-lg text-on-surface group-hover:text-primary transition-colors">Is cash still required in European cities?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<button class="w-full flex justify-between items-center py-5 border-b border-primary/20 group">
+<span class="font-title-lg text-on-surface group-hover:text-primary transition-colors">What is the best footwear for cobblestones?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Not going to Europe CTA -->
+<section class="mb-24 text-center">
+<h2 class="font-display-lg text-primary italic text-[32px] mb-2">Not going to Europe?</h2>
+<p class="text-on-surface-variant mb-8">PackRight works for any destination. Just describe your plans.</p>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md hover:bg-tertiary-container transition-all shadow-lg flex items-center gap-2 mx-auto" style="background-color: rgb(227, 116, 90);" onmouseover="this.style.backgroundColor='#c2634d'" onmouseout="this.style.backgroundColor='#E3745A'">
+                Create Your Custom List <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white py-16">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="flex flex-col md:flex-row justify-between mb-12 md:items-baseline"><div class="flex flex-col items-start"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTVDGU1hOvqqyXX6OP-tUz2EqmHspERIlO813AdZ0NOh-fVmEUgkeO_1xQPQFU1mar7Le8DCCx9sZb5BHmXYgmwQQL-X-OoLN8OTntU3Q4Mb2zFv5CMeawj-MpTYrzfQEWhLgWLQwC_mXP-swQX8SS0z7bu1Ruftop3PLYxkryDb47tdPgdmaf__qHlvhFPWhwsSUYcRrQcQJ2nK9FU3ondG-lGMmz1lVq_F68PMmAnebpNyZIw7zX3joJJUjcXKZD" alt="PackRight Logo" class="h-24 w-auto"></div><div class="flex gap-12 md:gap-24 md:ml-auto"><div><h4 class="font-bold text-on-surface mb-4">Destinations</h4><ul class="text-on-surface-variant space-y-2 text-label-md"><li class=""><a class="hover:text-primary" href="#">Europe</a></li><li class=""><a class="hover:text-primary" href="#">Asia</a></li><li class=""><a class="hover:text-primary" href="#">Americas</a></li></ul></div><div><h4 class="font-bold text-on-surface mb-4">Activities</h4><ul class="text-on-surface-variant space-y-2 text-label-md"><li class=""><a class="hover:text-primary" href="#">Skiing</a></li><li class=""><a class="hover:text-primary" href="#">Hiking</a></li><li class=""><a class="hover:text-primary" href="#">Culture</a></li></ul></div></div></div>
+    <div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-6"><div class="flex flex-wrap justify-center md:justify-start gap-x-12 gap-y-2 text-label-sm text-on-surface-variant w-full"><a href="#" class="hover:text-primary transition-colors">Sitemap</a><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a><a href="#" class="hover:text-primary transition-colors">Contact Us</a></div></div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+</body></html>
