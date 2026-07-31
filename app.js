@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clarifier: document.getElementById('screen-clarifier'),
         brainstorm: document.getElementById('screen-brainstorm'),
         packing: document.getElementById('screen-packing'),
-        success: document.getElementById('screen-success')
+        feedback: document.getElementById('screen-feedback')
     };
 
     const settingsModal = document.getElementById('settingsModal');
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (screens[screenId]) {
             screens[screenId].classList.remove('hidden');
-            if (screenId === 'launchpad' || screenId === 'clarifier' || screenId === 'packing' || screenId === 'brainstorm' || screenId === 'success') {
+            if (screenId === 'launchpad' || screenId === 'clarifier' || screenId === 'packing' || screenId === 'brainstorm' || screenId === 'feedback') {
                 screens[screenId].classList.add('flex');
             } else {
                 screens[screenId].classList.add('block');
@@ -475,6 +475,41 @@ document.addEventListener('DOMContentLoaded', () => {
         
         progressText.textContent = `${packed} / ${total} Items Packed`;
         progressBar.style.width = `${percent}%`;
+
+        // Auto transition at 100%
+        if (percent === 100 && total > 0) {
+            feedbackTotalItems = total;
+            feedbackTripDest = "your trip";
+            feedbackTripDays = "?";
+            
+            const summary = appState.activeTrip.trip_name || "";
+            const match = summary.match(/(\d+)\s+days?\s+in\s+(.+)/i);
+            if (match) {
+                feedbackTripDays = match[1];
+                feedbackTripDest = match[2];
+            } else if (summary) {
+                feedbackTripDest = summary;
+            }
+
+            document.getElementById('feedbackHeading').textContent = `You're all packed for ${feedbackTripDest}`;
+            document.getElementById('feedbackSubtext').textContent = `${total} items · ${feedbackTripDays} days`;
+
+            setTimeout(() => {
+                showScreen('feedback');
+                if (typeof confetti !== 'undefined') {
+                    confetti({
+                        particleCount: 50,
+                        spread: 60,
+                        origin: { y: 0.6 },
+                        colors: ['#E3745A', '#22c55e', '#3b82f6', '#facc15'],
+                        shapes: ['square'],
+                        ticks: 200,
+                        gravity: 0.8,
+                        scalar: 1.2
+                    });
+                }
+            }, 600);
+        }
     }
 
     function renderItem(item, container) {
@@ -745,58 +780,102 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Success Screen ---
-    const donePackingBtn = document.getElementById('donePackingBtn');
-    if (donePackingBtn) {
-        donePackingBtn.addEventListener('click', () => {
-            // Turn green
-            donePackingBtn.classList.remove('bg-primary', 'hover:bg-primary/90');
-            donePackingBtn.classList.add('bg-success', 'hover:bg-success/90');
-            
-            setTimeout(() => {
-                showScreen('success');
-                
-                // Trigger ribbon animation
-                if (typeof confetti !== 'undefined') {
-                    confetti({
-                        particleCount: 50,
-                        spread: 60,
-                        origin: { y: 0.6 },
-                        colors: ['#f97316', '#22c55e', '#3b82f6', '#facc15'],
-                        shapes: ['square'],
-                        ticks: 200,
-                        gravity: 0.8,
-                        scalar: 1.2
-                    });
+    
+    // --- Feedback Screen ---
+    let currentRating = 0;
+    let feedbackTotalItems = 0;
+    let feedbackTripDest = "your trip";
+    let feedbackTripDays = "?";
+
+    const starBtns = document.querySelectorAll('.star-btn');
+    starBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            currentRating = parseInt(e.target.dataset.val);
+            starBtns.forEach(sb => {
+                const val = parseInt(sb.dataset.val);
+                if (val <= currentRating) {
+                    sb.style.fontVariationSettings = "'FILL' 1";
+                    sb.classList.add('text-brand-terracotta');
+                    sb.classList.remove('text-outline-variant');
+                } else {
+                    sb.style.fontVariationSettings = "'FILL' 0";
+                    sb.classList.remove('text-brand-terracotta');
+                    sb.classList.add('text-outline-variant');
                 }
-                
-                // Reset button color for next time
-                setTimeout(() => {
-                    donePackingBtn.classList.remove('bg-success', 'hover:bg-success/90');
-                    donePackingBtn.classList.add('bg-primary', 'hover:bg-primary/90');
-                }, 500);
-            }, 300); // Wait 300ms so user sees the green state
+            });
+        });
+    });
+
+    const sendFeedbackBtn = document.getElementById('sendFeedbackBtn');
+    if (sendFeedbackBtn) {
+        sendFeedbackBtn.addEventListener('click', async () => {
+            if (currentRating === 0) {
+                alert("Please select a star rating first.");
+                return;
+            }
+
+            const msg = document.getElementById('feedbackMessage').value.trim();
+            const fname = document.getElementById('feedbackName').value.trim();
+            const femail = document.getElementById('feedbackEmail').value.trim();
+
+            const payload = {
+                destination: feedbackTripDest,
+                trip_duration: feedbackTripDays,
+                star_rating: currentRating,
+                message: msg,
+                name: fname,
+                email: femail,
+                items_checked: feedbackTotalItems,
+                total_items: feedbackTotalItems
+            };
+
+            if (supabase) {
+                try {
+                    await supabase.from('feedback').insert([payload]);
+                } catch(e) {
+                    console.error("Feedback error", e);
+                }
+            }
+
+            document.getElementById('feedbackFormContainer').classList.add('hidden');
+            document.getElementById('feedbackThanksContainer').classList.remove('hidden');
         });
     }
 
-    const successNewTripBtn = document.getElementById('successNewTripBtn');
-    if (successNewTripBtn) {
-        successNewTripBtn.addEventListener('click', () => {
-            localStorage.removeItem('packright_active_trip');
-            appState.activeTrip = null;
-            appState.rawPrompt = '';
-            appState.clarifierAnswers = [];
-            const mainInput = document.getElementById('mainPromptInput');
-            if (mainInput) mainInput.value = '';
-            
-            const extraContext = document.getElementById('clarifierContextInput');
-            if (extraContext) extraContext.value = '';
-            
-            showScreen('launchpad');
+    function resetToHome() {
+        localStorage.removeItem('packright_active_trip');
+        appState.activeTrip = null;
+        appState.rawPrompt = '';
+        appState.clarifierAnswers = [];
+        const mainInput = document.getElementById('mainPromptInput');
+        if (mainInput) mainInput.value = '';
+        const extraContext = document.getElementById('clarifierContextInput');
+        if (extraContext) extraContext.value = '';
+
+        // reset feedback UI for next time
+        document.getElementById('feedbackFormContainer').classList.remove('hidden');
+        document.getElementById('feedbackThanksContainer').classList.add('hidden');
+        document.getElementById('feedbackMessage').value = '';
+        document.getElementById('feedbackName').value = '';
+        document.getElementById('feedbackEmail').value = '';
+        currentRating = 0;
+        starBtns.forEach(sb => {
+            sb.style.fontVariationSettings = "'FILL' 0";
+            sb.classList.remove('text-brand-terracotta');
+            sb.classList.add('text-outline-variant');
         });
+
+        showScreen('launchpad');
     }
+
+    const skipFeedbackBtn = document.getElementById('skipFeedbackBtn');
+    if (skipFeedbackBtn) skipFeedbackBtn.addEventListener('click', resetToHome);
+
+    const feedbackNewTripBtn = document.getElementById('feedbackNewTripBtn');
+    if (feedbackNewTripBtn) feedbackNewTripBtn.addEventListener('click', resetToHome);
 
     // --- Homepage Sections Logic ---
+
 
     // 1. FAQ Accordion
     const faqBtns = document.querySelectorAll('.faq-btn');
