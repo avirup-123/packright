@@ -924,6 +924,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             star_rating: currentRating,
                             reason_tags: tags,
                             user_message: msg,
+                            name: fname,
+                            email: femail,
                             feedback_id: feedbackId
                         };
 
