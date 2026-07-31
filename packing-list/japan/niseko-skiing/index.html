@@ -236,7 +236,7 @@
 <!-- Top Navigation -->
 <header class="bg-surface shadow-sm docked full-width top-0 z-50">
 <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto w-full">
-<div class="text-headline-md font-headline-md font-bold text-brand-terracotta mb-2">PackRight</div>
+<a href="/" class="text-headline-md font-headline-md font-bold text-brand-terracotta mb-2 block hover:opacity-80 transition-opacity">PackRight</a>
 <nav class="hidden md:flex gap-8">
 <a class="text-secondary hover:text-primary transition-colors font-label-md text-label-md" href="#">Discover</a>
 <a class="text-secondary hover:text-primary transition-colors font-label-md text-label-md" href="#">Essentials</a>
@@ -268,9 +268,9 @@
 <!-- Header Section -->
 <section class="max-w-3xl">
 <div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-6">
-<a class="hover:text-primary transition-colors" href="#">Home</a>
+<a class="hover:text-primary transition-colors" href="/">Home</a>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-<a class="hover:text-primary transition-colors" href="#">Packing Lists</a>
+<a class="hover:text-primary transition-colors" href="/packing-list">Packing Lists</a>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
 <span class="text-primary font-medium">Japan</span>
 </div>
@@ -299,6 +299,28 @@ Generate My Packing List
 </button>
 </div>
 </section>
+
+<!-- How It Works Section -->
+<div id="how-it-works-section" class="w-full mb-24 hidden mt-12">
+<h2 class="font-headline-lg text-headline-lg italic text-brand-terracotta mb-10 text-center text-[#964331]">How It Works</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-card rounded-[24px] p-8 md:p-10 shadow-[0px_4px_20px_rgba(212,115,94,0.08)] flex flex-col items-center text-center">
+<div class="text-display-lg font-display-lg text-[#964331]/20 italic mb-4 leading-none">1</div>
+<h3 class="font-title-lg text-title-lg mb-3 text-text-rich">Describe Your Trip</h3>
+<p class="text-on-surface-variant font-body-md">Tell us where you're going, for how long, and what you'll be doing.</p>
+</div>
+<div class="bg-surface-card rounded-[24px] p-8 md:p-10 shadow-[0px_4px_20px_rgba(212,115,94,0.08)] flex flex-col items-center text-center">
+<div class="text-display-lg font-display-lg text-[#964331]/20 italic mb-4 leading-none">2</div>
+<h3 class="font-title-lg text-title-lg mb-3 text-text-rich">Get a Smart List</h3>
+<p class="text-on-surface-variant font-body-md">AI builds a personalized checklist based on your destination, weather, activities, and travel style.</p>
+</div>
+<div class="bg-surface-card rounded-[24px] p-8 md:p-10 shadow-[0px_4px_20px_rgba(212,115,94,0.08)] flex flex-col items-center text-center">
+<div class="text-display-lg font-display-lg text-[#964331]/20 italic mb-4 leading-none">3</div>
+<h3 class="font-title-lg text-title-lg mb-3 text-text-rich">Check Off and Pack</h3>
+<p class="text-on-surface-variant font-body-md">Use the interactive checklist to tick items off as they go into your bag.</p>
+</div>
+</div>
+</div>
 
         <!-- SCREEN 1.5: Clarifier -->
         <div id="screen-clarifier" class="w-full max-w-4xl bg-surface-card rounded-[24px] p-8 md:p-12 shadow-[0px_4px_20px_rgba(212,115,94,0.08)] mb-20 hidden flex-col mx-auto">
@@ -628,7 +650,7 @@ Yes, Type A/B plugs. Pack a cold-resistant power bank as batteries die fast in t
 <h2 class="font-display-lg text-display-lg text-primary italic">Not going to Niseko?</h2>
 <p class="font-body-md text-on-surface-variant">PackRight works for any destination. Just describe your plans.</p>
 </div>
-<button onclick="window.location.href='/?focus=true'" class="bg-[#964331] text-on-primary font-label-md text-label-md py-4 px-12 rounded-full hover:opacity-90 transition-all duration-200 active:scale-95 shadow-sm flex items-center gap-2" style="background-color: rgb(227, 116, 90); transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#C25D45'" onmouseout="this.style.backgroundColor='#E3745A'">
+<button onclick="window.switchToLaunchpad()" class="bg-[#964331] text-on-primary font-label-md text-label-md py-4 px-12 rounded-full hover:opacity-90 transition-all duration-200 active:scale-95 shadow-sm flex items-center gap-2" style="background-color: rgb(227, 116, 90); transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#C25D45'" onmouseout="this.style.backgroundColor='#E3745A'">
       Create Your Custom List
       <span class="material-symbols-outlined">arrow_right_alt</span>
 </button>

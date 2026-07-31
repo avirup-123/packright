@@ -1048,3 +1048,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+window.switchToLaunchpad = function() {
+    // Hide all sections in main except screens and how-it-works
+    document.querySelectorAll('main > section, main > div').forEach(el => {
+        if(!el.id.startsWith('screen-') && el.id !== 'how-it-works-section') {
+            el.classList.add('hidden');
+        }
+    });
+    
+    // Hide specific screens
+    const screens = ['clarifier', 'loading', 'packing', 'feedback'];
+    screens.forEach(s => {
+        const el = document.getElementById('screen-' + s);
+        if (el) el.classList.add('hidden');
+    });
+
+    // Show launchpad
+    const launchpad = document.getElementById('screen-launchpad');
+    if (launchpad) launchpad.classList.remove('hidden');
+    
+    // Remove border-t-4 from launchpad to look clean
+    if(launchpad) launchpad.classList.remove('border-t-4', 'border-primary');
+
+    // Show How It Works
+    const hiw = document.getElementById('how-it-works-section');
+    if (hiw) hiw.classList.remove('hidden');
+
+    // Scroll and focus
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+        const input = document.getElementById('mainPromptInput');
+        if (input) {
+            input.value = ''; // clear text
+            input.focus();
+        }
+    }, 100);
+};
